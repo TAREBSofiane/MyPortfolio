@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="bg-gradient-to-b from-gray-300 to-white dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="text-center" data-aos="fade-up">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Mes Expériences</h2>
+      <p class="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
+        Parcours professionnel et expériences significatives
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="py-8 bg-white dark:bg-gray-800 transition-colors duration-300" data-aos="fade-in" data-aos-delay="200" dat-aos-duration="1000">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">     
+    <!-- Timeline des expériences -->
+    <div class="grid md:grid-cols-2 gap-8">
+      {% for exp in experiences %}
+      <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl" data-aos="zoom-in" data-aos-delay="{{ loop.index * 100 }}">
+        <div class="relative overflow-hidden h-48">
+          <img src="{{ url_for('static', filename=exp.image) }}" alt="{{ exp.title }}" class="w-full h-48 object-cover transform transition-transform duration-500 hover:scale-110">
+          <div class="">
+            <span class="absolute top-3 right-3 px-3 py-1 bg-primary-500 text-white text-xs font-medium rounded-full">{{ exp.period }}</span>
+            <h3 class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent text-white p-4 text-xl font-semibold">{{ exp.title }}</h3>
+          </div>
+        </div>
+        
+        <div class="p-6">
+          <h4 class="text-lg font-medium text-primary-600 dark:text-primary-400 mb-3">{{ exp.institution }}</h4>
+          <div class="overflow-y-auto text-gray-600 dark:text-gray-300 mb-6 exp-description" style="max-height: 160px;">
+            {% if exp.description %}
+            <p class="text-gray-600 dark:text-gray-300 mb-4">{{ exp.description }}</p>
+            {% endif %}
+            <h5 class="text-sm font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Missions</h5>
+            {% if exp.missions %}
+            <ul class="list-disc pl-5 text-gray-600 dark:text-gray-300 mb-4">
+              {% for mission in exp.missions %}
+              <li>{{ mission }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </div>
+          <style>.exp-description::-webkit-scrollbar {width: 4px !important;}</style>
+          
+          <!-- Matières/Compétences acquises -->
+          <div class="mb-4">
+            <h5 class="text-sm font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Compétences et outils</h5>
+            <div class="flex flex-wrap gap-2">
+              {% for skill in exp.skills %}
+              <span class="px-2 py-1 bg-gray-100 dark:bg-gray-600 text-xs rounded">{{ skill }}</span>
+              {% endfor %}
+            </div>
+          </div>
+          
+          {% if exp.link %}
+          <a href="{{ exp.link }}" target="_blank" class="text-primary-600 dark:text-primary-400 hover:underline flex items-center">
+            <span>Organisme</span>
+            <i class="bx bx-right-arrow-alt ml-1"></i>
+          </a>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+{% endblock %}

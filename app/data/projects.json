@@ -1,0 +1,18 @@
+[
+    {
+      "title": "Agent IAG pour Support IT",
+      "description": "Agent conversationnel intelligent pour accéder aux bases de connaissances du service informatique.",
+      "image": "images/Agent_IA.png",
+      "link": "https://github.com/TAREBSofiane",
+      "technologies": ["Python", "Flask", "IAG", "RAG"],
+      "category": "ai"
+    },
+    {
+      "title": "Agent IAG pour Support IT",
+      "description": "Agent conversationnel intelligent pour accéder aux bases de connaissances du service informatique.",
+      "image": "images/Agent_IA.png",
+      "link": "https://github.com/TAREBSofiane",
+      "technologies": ["Python", "Flask", "IAG", "RAG"],
+      "category": "ai"
+    }
+  ]

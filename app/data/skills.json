@@ -1,0 +1,17 @@
+
+[
+    {"name": "Python", "icon": "bxl-python"},
+    {"name": "R", "icon": "bx-analyse"},
+    {"name": "SQL", "icon": "bx-data"},
+    {"name": "Machine Learning", "icon": "bx-brain"},
+    {"name": "Deep Learning", "icon": "bx-brain"},
+    {"name": "GCP","icon": "bxl-google-cloud"},
+    {"name": "Big Data","icon": "bx-server"},
+    {"name": "Git", "icon": "bxl-git"},
+    {"name": "GitHub", "icon": "bxl-github"},
+    {"name": "NLP", "icon": "bx-chat"},
+    {"name": "Flask", "icon": "bxl-flask"},
+    {"name": "Docker","icon": "bxl-docker"},
+    {"name": "Excel", "icon": "bx-file"},
+    {"name": "Power BI", "icon": "bxl-power-bi"}
+]

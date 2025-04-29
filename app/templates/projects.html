@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="bg-gradient-to-b from-gray-300 to-white dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="text-center" data-aos="fade-up">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Mes Projets</h2>
+      <p class="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
+        Découvrez les projets sur lesquels j'ai travaillé et les technologies que j'ai utilisées
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="py-8 bg-white dark:bg-gray-800 transition-colors duration-300" data-aos="fade-in" data-aos-delay="200" dat-aos-duration="1000">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">      
+    <!-- Filtres de projets -->
+    <div class="mb-12 flex flex-wrap justify-center gap-4" data-aos="fade-up" data-aos-delay="100">
+      <button class="filter-btn active px-4 py-2 rounded-lg bg-primary-600 text-white hover:bg-primary-700 transition-colors duration-300" data-filter="all">Tous</button>
+      <button class="filter-btn px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300" data-filter="web">Web</button>
+      <button class="filter-btn px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300" data-filter="ai">IA</button>
+      <button class="filter-btn px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300" data-filter="data">Data</button>
+    </div>
+    
+    <!-- Liste des projets -->
+    <div class="grid md:grid-cols-2 gap-8">
+      {% for project in projects %}
+      <div class="project-card {{ project.category }} bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl" data-aos="zoom-in" data-aos-delay="{{ loop.index * 100 }}">
+        <div class="relative overflow-hidden h-48">
+          <img src="{{ url_for('static', filename=project.image) }}" alt="{{ project.title }}" class="w-full h-48 object-cover transform transition-transform duration-500 hover:scale-110">
+          <div class="">
+            <span class="absolute top-3 right-3 px-3 py-1 bg-primary-500 text-white text-xs font-medium rounded-full">{{ project.category }}</span>
+            <h3 class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent text-white p-4 text-xl font-semibold">{{ project.title }}</h3>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="overflow-y-auto text-gray-600 dark:text-gray-300 mb-4 project-description" style="max-height: 160px;">
+            <p>{{ project.description }}</p>
+          </div>
+          <style>.project-description::-webkit-scrollbar {width: 4px !important;}</style>
+          
+          <!-- Technologies utilisées -->
+          <div class="mb-4">
+            <h5 class="text-sm font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Compétences et outils</h5>
+            <div class="flex flex-wrap gap-2">
+              {% for tech in project.technologies %}
+              <span class="px-2 py-1 bg-gray-100 dark:bg-gray-600 text-xs rounded">{{ tech }}</span>
+              {% endfor %}
+            </div>
+          </div>
+          
+          <div class="flex justify-between items-center">
+            <a href="{{ project.link }}" target="_blank" class="text-primary-600 dark:text-primary-400 hover:underline flex items-center">
+              <span>Voir le code</span>
+              <i class="bx bx-right-arrow-alt ml-1"></i>
+            </a>
+            {% if project.demo %}
+            <a href="{{ project.demo }}" target="_blank" class="px-3 py-1 bg-gray-800 dark:bg-gray-900 text-white text-sm rounded hover:bg-gray-700 dark:hover:bg-gray-800 transition-colors duration-300">
+              Démo
+            </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    
+    <!-- Message si aucun projet dans la catégorie sélectionnée -->
+    <div id="no-projects" class="hidden text-center py-12 text-gray-600 dark:text-gray-400">
+      <i class="bx bx-folder-open text-5xl mb-4"></i>
+      <p class="text-lg">Aucun projet dans cette catégorie pour le moment.</p>
+    </div>
+  </div>
+</section>
+{% endblock %}
