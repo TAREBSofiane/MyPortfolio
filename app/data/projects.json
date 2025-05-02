@@ -1,10 +1,10 @@
 [
     {
-      "title": "Agent IAG pour Support IT",
-      "description": "Agent conversationnel intelligent pour accéder aux bases de connaissances du service informatique.",
-      "image": "images/Agent_IA.png",
-      "link": "https://github.com/TAREBSofiane",
-      "technologies": ["Python", "Flask", "IAG", "RAG"],
-      "category": "ai"
+      "title": "MyPortfolio",
+      "description": "Ce portfolio a été conçu avec Python et Flask. Il est organisé autour d’une architecture modulaire, avec une séparation claire entre les routes, les templates HTML, les fichiers statiques (CSS/JS/images) et les données. Le site dans lequel vous naviguez actuellement est justement ce portfolio, développé dans le cadre d’un projet personnel afin de présenter mes compétences, mes projets et mon parcours académique et professionnel de manière interactive et accessible.",
+      "image": "images/images (1)_1746174315330.jpeg",
+      "link": "https://github.com/TAREBSofiane/MyPortfolio",
+      "technologies": ["Python", "Flask", "HTML", "CSS"],
+      "category": "web"
     }
   ]
