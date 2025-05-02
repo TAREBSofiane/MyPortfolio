@@ -4,8 +4,6 @@ from flask import Flask, render_template, url_for, jsonify, request, flash, redi
 from flask_mail import Mail, Message
 from dotenv import load_dotenv
 from flask_talisman import Talisman
-from flask_limiter import Limiter
-from flask_limiter.util import get_remote_address
 from flask_wtf.csrf import CSRFProtect
 from markupsafe import escape
 import re
@@ -75,8 +73,8 @@ RECIPIENT_EMAIL = os.environ.get('RECIPIENT_EMAIL')
 
 mail = Mail(app)
 
-# Charger les projets depuis JSON
-def load_projects(fjson):
+# Charger les fichiers depuis JSON
+def load_json(fjson):
     path = os.path.join(app.root_path, 'data', fjson)
     # Validation du nom de fichier pour éviter la traversée de répertoire
     if not re.match(r'^[a-zA-Z0-9_-]+\.json$', fjson):
@@ -91,22 +89,22 @@ def load_projects(fjson):
 
 @app.route('/')
 def index():
-    skills = load_projects('skills.json')
+    skills = load_json('skills.json')
     return render_template('index.html', skills=skills)
 
 @app.route('/projects')
 def projects():
-    data = load_projects('projects.json')
+    data = load_json('projects.json')
     return render_template('projects.html', projects=data)
 
 @app.route('/experiences')
 def experiences():
-    data = load_projects('experiences.json')
+    data = load_json('experiences.json')
     return render_template('experiences.html', experiences=data)
 
 @app.route('/education')
 def education():
-    data = load_projects('education.json')
+    data = load_json('education.json')
     return render_template('education.html', education=data)
 
 @app.route('/contact', methods=['GET', 'POST'])
@@ -189,19 +187,19 @@ Sofiane TAREB
 # API JSON routes avec limiteur de requêtes
 @app.route('/api/projects')
 def api_projects():
-    return jsonify(load_projects('projects.json'))
+    return jsonify(load_json('projects.json'))
 
 @app.route('/api/experiences')
 def api_experiences():
-    return jsonify(load_projects('experiences.json'))
+    return jsonify(load_json('experiences.json'))
 
 @app.route('/api/education')
 def api_education():
-    return jsonify(load_projects('education.json'))
+    return jsonify(load_json('education.json'))
 
 @app.route('/api/skills')
 def api_skills():
-    return jsonify(load_projects('skills.json'))
+    return jsonify(load_json('skills.json'))
 
 # Gestionnaire d'erreurs
 @app.errorhandler(404)
