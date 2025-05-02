@@ -80,7 +80,7 @@ MyPortfolio/
 ---
 
 - Site accessible sur <http://localhost:1997>
-- Les projets, expériences et formations sont chargés depuis `data/*.json` (la structure des JSON doit être respectée)
+- Les projets, expériences, formations et compétences sont chargés depuis `data/*.json` (la structure des JSON doit être respectée)
 - Le formulaire de contact envoie deux emails (au destinataire et un accusé de réception)
 
 ---
