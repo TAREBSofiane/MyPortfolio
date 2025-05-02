@@ -76,7 +76,14 @@ MyPortfolio/
    ```
 4. **Configurer les variables d'environnement**
    - Copier `.env` et renseigner vos identifiants SMTP et la clé secrète et tous les pré-requis
-
+3. **Lancement**
+   ```bash
+   python run.py
+   ```
+   ou
+   ```bash
+   gunicorn app:app
+   ```
 ---
 
 - Site accessible sur <http://localhost:1997>
