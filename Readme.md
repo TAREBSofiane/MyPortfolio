@@ -1,6 +1,6 @@
 # MyPortfolio
 
-**MyPortfolio** est une application web personnelle développée en Python avec le framework Flask. La page d’accueil présente qui je suis, ce que je fais, ainsi que mes compétences. Chaque section clé _expériences professionnelles, parcours éducatif_ et _projets_ dispose de sa propre page dédiée pour une navigation claire et structurée. Le site intègre également une page de contact avec envoi d’e-mails. Il est sécurisé à l’aide des extensions Flask-Talisman (HTTPS, en-têtes de sécurité) et CSRF pour protéger les formulaires contre les attaques intersites.
+**MyPortfolio** est une application web personnelle développée en Python avec le framework Flask. La page d’accueil présente qui je suis, ce que je fais, ainsi que mes compétences. Chaque section clé (_expériences professionnelles, parcours éducatif et projets_) dispose de sa propre page dédiée pour une navigation claire et structurée. Le site intègre également une page de contact avec envoi d’e-mails. Il est sécurisé à l’aide des extensions Flask-Talisman (HTTPS, en-têtes de sécurité) et CSRF pour protéger les formulaires contre les attaques intersites.
 
 ---
 
