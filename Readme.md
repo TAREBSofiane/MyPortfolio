@@ -9,7 +9,7 @@
 ## Fonctionnalités principales
 
 - Page d'accueil avec message de bienvenue, ce que je fais, qui suis-je et ce que je maitrise
-- Sections _Expériences_ et _Formations_ et _Projets_ dynamiques, chargée depuis des fichiers JSON
+- Sections _Expériences_, _Formations_ et _Projets_ dynamiques, chargée depuis des fichiers JSON
 - Formulaire _Contact_ avec envoi d'email (Flask-Mail)
 - Slider / animations AOS
 - Grille responsive des blocs projets, experiences et éducation :
