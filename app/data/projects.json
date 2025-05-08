@@ -14,5 +14,13 @@
       "link": "https://github.com/TAREBSofiane/Visualisation_Bokeh",
       "technologies": ["Python", "Bokeh", "Pandas"],
       "category": {"id": "data_viz", "name": "Data Visualisation"}
+    },
+    {
+      "title": "Visualisation Accidents France",
+      "description": "Cette application RShiny permet d'explorer et d'analyser les données d'accidents de la route en France entre 2005 et 2016. Elle offre plusieurs visualisations et fonctionnalités pour mieux comprendre les tendances et facteurs liés aux accidents routiers.",
+      "image": "images/Visualisation_RShiny.png",
+      "link": "https://github.com/TAREBSofiane/RShiny_Accidents_France",
+      "technologies": ["R", "Shiny"],
+      "category": {"id": "data_viz", "name": "Data Visualisation"}
     }
   ]
