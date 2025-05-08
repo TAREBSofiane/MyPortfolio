@@ -12,6 +12,8 @@
     {"name": "NLP", "icon": "bx-chat"},
     {"name": "Flask", "icon": "bxl-flask"},
     {"name": "Docker","icon": "bxl-docker"},
+    {"name": "Hadoop","icon": "bxl-hadoop"},
+    {"name": "PySpark","icon": "bxl-spark"},
     {"name": "Excel", "icon": "bx-file"},
     {"name": "Power BI", "icon": "bxl-power-bi"}
 ]
