@@ -8,19 +8,19 @@
       "category": {"id": "web", "name": "Web"}
     },
     {
-      "title": "Visualisation Rennes Mobilités",
-      "description": "Ce petit projet propose une visualisation interactive des mobilités à Rennes en utilisant la bibliothèque Bokeh en Python. Le projet se concentre sur deux aspects principaux : le réseau de transport en commun STAR et la fréquentation des modes de déplacement doux (vélo/piéton) sur les grands boulevards.",
-      "image": "images/Visualisation_Bokeh.png",
-      "link": "https://github.com/TAREBSofiane/Visualisation_Bokeh",
-      "technologies": ["Python", "Bokeh", "Pandas"],
-      "category": {"id": "data_viz", "name": "Data Visualisation"}
-    },
-    {
       "title": "Visualisation Accidents France",
       "description": "Cette application RShiny permet d'explorer et d'analyser les données d'accidents de la route en France entre 2005 et 2016. Elle offre plusieurs visualisations et fonctionnalités pour mieux comprendre les tendances et facteurs liés aux accidents routiers.",
       "image": "images/Visualisation_RShiny.png",
       "link": "https://github.com/TAREBSofiane/RShiny_Accidents_France",
       "technologies": ["R", "Shiny"],
+      "category": {"id": "data_viz", "name": "Data Visualisation"}
+    },
+    {
+      "title": "Visualisation Rennes Mobilités",
+      "description": "Ce petit projet propose une visualisation interactive des mobilités à Rennes en utilisant la bibliothèque Bokeh en Python. Le projet se concentre sur deux aspects principaux : le réseau de transport en commun STAR et la fréquentation des modes de déplacement doux (vélo/piéton) sur les grands boulevards.",
+      "image": "images/Visualisation_Bokeh.png",
+      "link": "https://github.com/TAREBSofiane/Visualisation_Bokeh",
+      "technologies": ["Python", "Bokeh", "Pandas"],
       "category": {"id": "data_viz", "name": "Data Visualisation"}
     }
   ]
