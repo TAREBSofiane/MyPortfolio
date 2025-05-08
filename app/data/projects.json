@@ -6,5 +6,13 @@
       "link": "https://github.com/TAREBSofiane/MyPortfolio",
       "technologies": ["Python", "Flask", "HTML", "CSS", "JavaScript"],
       "category": "web"
+    },
+    {
+      "title": "Visualisation Rennes Mobilités",
+      "description": "Ce petit projet propose une visualisation interactive des mobilités à Rennes en utilisant la bibliothèque Bokeh en Python. Le projet se concentre sur deux aspects principaux : le réseau de transport en commun STAR et la fréquentation des modes de déplacement doux (vélo/piéton) sur les grands boulevards.",
+      "image": "images/images (1)_1746174315330.jpeg",
+      "link": "https://github.com/TAREBSofiane/Visualisation_Bokeh",
+      "technologies": ["Python", "Bokeh", "Pandas"],
+      "category": "web"
     }
   ]
