@@ -5,7 +5,7 @@
       "image": "images/images (1)_1746174315330.jpeg",
       "link": "https://github.com/TAREBSofiane/MyPortfolio",
       "technologies": ["Python", "Flask", "HTML", "CSS", "JavaScript"],
-      "category": "web"
+      "category": {"id": "web", "name": "Web"}
     },
     {
       "title": "Visualisation Rennes Mobilités",
@@ -13,6 +13,6 @@
       "image": "images/Visualisation_Bokeh.png",
       "link": "https://github.com/TAREBSofiane/Visualisation_Bokeh",
       "technologies": ["Python", "Bokeh", "Pandas"],
-      "category": "data_viz"
+      "category": {"id": "data_viz", "name": "Data Visualisation"}
     }
   ]
