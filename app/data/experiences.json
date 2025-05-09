@@ -1,6 +1,6 @@
 [
   {
-    "title": "STAGE - Agent IAG basé sur du RAG",
+    "title": "STAGE - Développement d'un Agent IAG",
     "description": "Stage réalisé au sein de Rennes Métropole, visant à concevoir et déployer un agent intelligent basé sur un système RAG (Retrieval-Augmented Generation) pour améliorer les services internes.",
     "missions": [
       "Conception et déploiement d’un agent IAG basé sur un système RAG qui s'appuie sur les bases documentaires des services Support Informatique et Ressources Humaines.",
