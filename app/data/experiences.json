@@ -3,9 +3,10 @@
     "title": "STAGE - Data Scientist / AI Engineer",
     "description": "Stage réalisé au sein de Rennes Métropole, visant à concevoir et déployer un agent intelligent basé sur un système RAG (Retrieval-Augmented Generation) pour améliorer les services internes.",
     "missions": [
-      "Conception et déploiement d’un agent IAG basé sur un système RAG qui s'appuie sur les bases documentaires des services Support Informatique et Ressources Humaines.",
+      "Conception et déploiement d’un agent IAG basé sur un système RAG qui s'appuie sur les bases documentaires de différents services.",
       "Exploration et structuration de bases de connaissances hétérogènes (FAQ, documents internes, tickets, etc.) en vue de leur intégration dans le système RAG.",
       "Conception d’une application destinée à automatiser le traitement des documents et à centraliser la gestion des bases de connaissances.",
+      "Développement d'applications et interfaces web pour différents cas d'usages avec python.",
       "Participation à la définition des cas d’usage métiers et à la validation des prototypes avec les équipes fonctionnelles."
     ],
     "image": "images/Rennes_métropole.jpeg",
