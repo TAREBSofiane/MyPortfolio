@@ -10,7 +10,7 @@
       "Participation à la définition des cas d’usage métiers et à la validation des prototypes avec les équipes fonctionnelles."
     ],
     "image": "images/Rennes_métropole.jpeg",
-    "skills": ["RAG", "Python", "Flask", "Docker", "NLP"],
+    "skills": ["RAG", "Python", "Flask", "Docker", "GitLab", "CI/CD"],
     "institution": "Rennes métropole - Rennes",
     "period": "Fév. 2025 - Aoû. 2025",
     "link": "https://metropole.rennes.fr/"
