@@ -45,54 +45,41 @@ document.addEventListener("DOMContentLoaded", function() {
   
   navLinks.forEach(link => {
     const href = link.getAttribute('href');
-    if (href === currentPath || (currentPath.endsWith(href) && href !== '/')) {
+    if (href === currentPath) {
       link.classList.add('active');
     }
   });
 
-  // ---------- Dark Mode ----------
-  const darkModeToggle = document.getElementById('dark-mode-toggle');
-  const darkModeToggleMobile = document.getElementById('dark-mode-toggle-mobile');
+  // ---------- Dark Mode Toggle ----------
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeToggleMobile = document.getElementById('theme-toggle-mobile');
   
-  function initDarkMode() {
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-      document.documentElement.classList.add('dark');
-    }
+  // Check if user has dark mode preference
+  if (localStorage.getItem('darkMode') === 'true' || 
+     (window.matchMedia('(prefers-color-scheme: dark)').matches && localStorage.getItem('darkMode') !== 'false')) {
+    document.documentElement.classList.add('dark');
   }
   
   function toggleDarkMode() {
     document.documentElement.classList.toggle('dark');
-    const isDark = document.documentElement.classList.contains('dark');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    localStorage.setItem('darkMode', document.documentElement.classList.contains('dark'));
   }
   
-  if (darkModeToggle) {
-    darkModeToggle.addEventListener('click', toggleDarkMode);
-  }
-  
-  if (darkModeToggleMobile) {
-    darkModeToggleMobile.addEventListener('click', toggleDarkMode);
-  }
-  
-  initDarkMode();
+  if (themeToggle) themeToggle.addEventListener('click', toggleDarkMode);
+  if (themeToggleMobile) themeToggleMobile.addEventListener('click', toggleDarkMode);
 
   // ---------- Back to Top Button ----------
   const backToTopBtn = document.getElementById('back-to-top');
   
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      backToTopBtn.classList.remove('opacity-0', 'invisible');
+    } else {
+      backToTopBtn.classList.add('opacity-0', 'invisible');
+    }
+  });
+  
   if (backToTopBtn) {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        backToTopBtn.classList.remove('opacity-0', 'invisible');
-        backToTopBtn.classList.add('opacity-100', 'visible');
-      } else {
-        backToTopBtn.classList.add('opacity-0', 'invisible');
-        backToTopBtn.classList.remove('opacity-100', 'visible');
-      }
-    });
-    
     backToTopBtn.addEventListener('click', () => {
       window.scrollTo({
         top: 0,
@@ -101,241 +88,15 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
-  // ---------- Data Loading Functions ----------
-  async function loadJSON(filename) {
-    try {
-      const response = await fetch(`data/${filename}`);
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return await response.json();
-    } catch (error) {
-      console.error(`Error loading ${filename}:`, error);
-      return [];
-    }
-  }
-
-  // ---------- Render Functions ----------
-  function renderSkills(skills) {
-    const skillsContainer = document.getElementById('skills-container');
-    if (!skillsContainer || !skills.length) return;
-
-    skillsContainer.innerHTML = '';
-    
-    skills.forEach((skill, index) => {
-      const skillCard = document.createElement('div');
-      skillCard.className = 'bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl';
-      skillCard.setAttribute('data-aos', 'zoom-in');
-      skillCard.setAttribute('data-aos-delay', (index * 100).toString());
-      
-      skillCard.innerHTML = `
-        <div class="flex items-center mb-4">
-          <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center mr-4">
-            <i class="bx ${skill.icon} text-primary-600 dark:text-primary-400 text-xl"></i>
-          </div>
-          <h3 class="text-lg font-medium">${skill.title}</h3>
-        </div>
-        <div class="space-y-3">
-          ${skill.technologies.map(tech => `
-            <div class="flex justify-between items-center">
-              <span class="text-sm text-gray-600 dark:text-gray-400">${tech.name}</span>
-              <div class="flex items-center space-x-2">
-                <div class="w-20 bg-gray-200 dark:bg-gray-600 rounded-full h-2">
-                  <div class="skill-progress bg-primary-600 h-2 rounded-full transition-all duration-1000 ease-out" 
-                       data-target="${tech.level}%" style="width: 0%"></div>
-                </div>
-                <span class="text-xs text-gray-500 dark:text-gray-400">${tech.level}%</span>
-              </div>
-            </div>
-          `).join('')}
-        </div>
-      `;
-      
-      skillsContainer.appendChild(skillCard);
-    });
-
-    // Update counts on index page
-    const technologiesCount = document.getElementById('technologies-count');
-    if (technologiesCount) {
-      const totalTechs = skills.reduce((count, skill) => count + skill.technologies.length, 0);
-      technologiesCount.textContent = `${totalTechs}+`;
-    }
-  }
-
-  function renderProjects(projects) {
-    const projectsContainer = document.getElementById('projects-container');
-    if (!projectsContainer || !projects.length) return;
-
-    projectsContainer.innerHTML = '';
-    
-    projects.forEach((project, index) => {
-      const projectCard = document.createElement('div');
-      projectCard.className = `project-card ${project.category.id} bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl`;
-      projectCard.setAttribute('data-aos', 'zoom-in');
-      projectCard.setAttribute('data-aos-delay', (index * 100).toString());
-      
-      projectCard.innerHTML = `
-        <div class="relative overflow-hidden h-48">
-          <img src="${project.image}" alt="${project.title}" class="w-full h-48 object-cover transform transition-transform duration-500 hover:scale-110">
-          <div class="">
-            <span class="absolute top-3 right-3 px-3 py-1 bg-primary-500 text-white text-xs font-medium rounded-full">${project.category.name}</span>
-            <h3 class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent text-white p-4 text-xl font-semibold">${project.title}</h3>
-          </div>
-        </div>
-        <div class="p-6">
-          <div class="overflow-y-auto text-gray-600 dark:text-gray-300 mb-4 project-description" style="max-height: 160px;">
-            <p>${project.description}</p>
-          </div>
-          <style>.project-description::-webkit-scrollbar {width: 4px !important;}</style>
-          
-          <!-- Technologies utilisées -->
-          <div class="mb-4">
-            <h5 class="text-sm font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Compétences et outils</h5>
-            <div class="flex flex-wrap gap-2">
-              ${project.technologies.map(tech => `<span class="px-2 py-1 bg-gray-100 dark:bg-gray-600 text-xs rounded">${tech}</span>`).join('')}
-            </div>
-          </div>
-          
-          <!-- Liens du projet -->
-          <div class="flex gap-3">
-            ${project.link ? `
-              <a href="${project.link}" target="_blank" 
-                class="flex-1 bg-primary-600 hover:bg-primary-700 text-white py-2 px-4 rounded-lg text-center text-sm font-medium transition-colors duration-300 flex items-center justify-center">
-                <i class="bx bx-link-external mr-1"></i> Voir le code
-              </a>
-            ` : ''}
-          </div>
-        </div>
-      `;
-      
-      projectsContainer.appendChild(projectCard);
-    });
-
-    // Update project count on index page
-    const projectsCount = document.getElementById('projects-count');
-    if (projectsCount) {
-      projectsCount.textContent = `${projects.length}+`;
-    }
-
-    // Initialize project filtering
-    initProjectFiltering();
-  }
-
-  function renderExperiences(experiences) {
-    const experiencesContainer = document.getElementById('experiences-container');
-    if (!experiencesContainer || !experiences.length) return;
-
-    experiencesContainer.innerHTML = '';
-    
-    experiences.forEach((exp, index) => {
-      const expCard = document.createElement('div');
-      expCard.className = 'bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl';
-      expCard.setAttribute('data-aos', 'zoom-in');
-      expCard.setAttribute('data-aos-delay', (index * 100).toString());
-      
-      expCard.innerHTML = `
-        <div class="relative overflow-hidden h-48">
-          <img src="${exp.image}" alt="${exp.title}" class="w-full h-48 object-cover transform transition-transform duration-500 hover:scale-110">
-          <div class="">
-            <span class="absolute top-3 right-3 px-3 py-1 bg-primary-500 text-white text-xs font-medium rounded-full">${exp.period}</span>
-            <h3 class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent text-white p-4 text-xl font-semibold">${exp.title}</h3>
-          </div>
-        </div>
-        
-        <div class="p-6">
-          <h4 class="text-lg font-medium text-primary-600 dark:text-primary-400 mb-3">${exp.institution}</h4>
-          <div class="overflow-y-auto text-gray-600 dark:text-gray-300 mb-6 exp-description" style="max-height: 160px;">
-            ${exp.description ? `<p class="text-gray-600 dark:text-gray-300 mb-4">${exp.description}</p>` : ''}
-            ${exp.missions && exp.missions.length ? `
-              <h5 class="text-sm font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Missions</h5>
-              <ul class="list-disc pl-5 text-gray-600 dark:text-gray-300 mb-4">
-                ${exp.missions.map(mission => `<li>${mission}</li>`).join('')}
-              </ul>
-            ` : ''}
-          </div>
-          <style>.exp-description::-webkit-scrollbar {width: 4px !important;}</style>
-          
-          <!-- Compétences acquises -->
-          <div class="mb-4">
-            <h5 class="text-sm font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Compétences et outils</h5>
-            <div class="flex flex-wrap gap-2">
-              ${exp.skills.map(skill => `<span class="px-2 py-1 bg-gray-100 dark:bg-gray-600 text-xs rounded">${skill}</span>`).join('')}
-            </div>
-          </div>
-          
-          ${exp.link ? `
-            <a href="${exp.link}" target="_blank" 
-              class="inline-flex items-center text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 transition-colors duration-300">
-              <i class="bx bx-link-external mr-1"></i> En savoir plus
-            </a>
-          ` : ''}
-        </div>
-      `;
-      
-      experiencesContainer.appendChild(expCard);
-    });
-  }
-
-  function renderEducation(education) {
-    const educationContainer = document.getElementById('education-container');
-    if (!educationContainer || !education.length) return;
-
-    educationContainer.innerHTML = '';
-    
-    education.forEach((edu, index) => {
-      const eduCard = document.createElement('div');
-      eduCard.className = 'bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl';
-      eduCard.setAttribute('data-aos', 'zoom-in');
-      eduCard.setAttribute('data-aos-delay', (index * 100).toString());
-      
-      eduCard.innerHTML = `
-        <div class="relative overflow-hidden h-48">
-          <img src="${edu.image}" alt="${edu.title}" class="w-full h-48 object-cover transform transition-transform duration-500 hover:scale-110">
-          <div class="">
-            <span class="absolute top-3 right-3 px-3 py-1 bg-primary-500 text-white text-xs font-medium rounded-full">${edu.period}</span>
-            <h3 class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent text-white p-4 text-xl font-semibold">${edu.title}</h3>
-          </div>
-        </div>
-        
-        <div class="p-6">
-          <h4 class="text-lg font-medium text-primary-600 dark:text-primary-400 mb-3">${edu.institution}</h4>
-          <div class="overflow-y-auto text-gray-600 dark:text-gray-300 mb-4 edu-description" style="max-height: 160px;">
-            ${edu.formation ? `<div class="formation-content">${edu.formation}</div>` : ''}
-            ${edu.parcours ? `<div class="parcours-content">${edu.parcours}</div>` : ''}
-          </div>
-          <style>.edu-description::-webkit-scrollbar {width: 4px !important;}</style>
-          
-          <!-- Compétences acquises -->
-          <div class="mb-4">
-            <h5 class="text-sm font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Compétences acquises</h5>
-            <div class="flex flex-wrap gap-2">
-              ${edu.skills.map(skill => `<span class="px-2 py-1 bg-gray-100 dark:bg-gray-600 text-xs rounded">${skill}</span>`).join('')}
-            </div>
-          </div>
-          
-          ${edu.link ? `
-            <a href="${edu.link}" target="_blank" 
-              class="inline-flex items-center text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 transition-colors duration-300">
-              <i class="bx bx-link-external mr-1"></i> En savoir plus
-            </a>
-          ` : ''}
-        </div>
-      `;
-      
-      educationContainer.appendChild(eduCard);
-    });
-  }
-
   // ---------- Project Filtering ----------
-  function initProjectFiltering() {
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
-    
-    if (filterBtns.length === 0 || projectCards.length === 0) return;
-    
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
+  const noProjectsMsg = document.getElementById('no-projects');
+  
+  if (filterBtns.length && projectCards.length) {
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
-        // Update button states
+        // Update active button
         filterBtns.forEach(b => b.classList.remove('active', 'bg-primary-600', 'text-white'));
         filterBtns.forEach(b => b.classList.add('bg-gray-200', 'dark:bg-gray-700'));
         btn.classList.add('active', 'bg-primary-600', 'text-white');
@@ -360,13 +121,19 @@ document.addEventListener("DOMContentLoaded", function() {
             card.style.transform = 'translateY(20px)';
           }
         });
+        
+        // Show/hide "no projects" message
+        if (noProjectsMsg) {
+          noProjectsMsg.classList.toggle('hidden', visibleProjects > 0);
+        }
       });
     });
   }
 
   // ---------- Skill Progress Animation ----------
+  const skillBars = document.querySelectorAll('.skill-progress');
+  
   function animateSkillBars() {
-    const skillBars = document.querySelectorAll('.skill-progress');
     skillBars.forEach(bar => {
       const target = bar.getAttribute('data-target');
       bar.style.width = target;
@@ -374,31 +141,29 @@ document.addEventListener("DOMContentLoaded", function() {
   }
   
   // Use Intersection Observer to animate skills when visible
-  function initSkillAnimation() {
-    const skillSection = document.querySelector('#skills-container');
-    if (!skillSection) return;
+  if (skillBars.length > 0) {
+    const skillSection = document.querySelector('.skill-container').closest('section');
     
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          setTimeout(animateSkillBars, 500);
+          animateSkillBars();
           observer.unobserve(entry.target);
         }
       });
     }, { threshold: 0.3 });
     
-    observer.observe(skillSection.closest('section'));
+    observer.observe(skillSection);
   }
 
-  // ---------- Form Handling ----------
-  function initContactForm() {
-    const contactForm = document.getElementById('contact-form');
-    if (!contactForm) return;
-    
+  // ---------- Form Validation ----------
+  const contactForm = document.getElementById('contact-form');
+  
+  if (contactForm) {
     const formFields = contactForm.querySelectorAll('input, textarea');
     const submitBtn = document.getElementById('submit-btn');
-    const submitText = document.getElementById('submit-text');
-    const submitSpinner = document.getElementById('submit-spinner');
+    const spinner = document.getElementById('spinner');
+    const formStatus = document.getElementById('form-status');
     
     formFields.forEach(field => {
       field.addEventListener('blur', () => {
@@ -406,11 +171,9 @@ document.addEventListener("DOMContentLoaded", function() {
       });
       
       field.addEventListener('input', () => {
-        const errorDiv = field.parentElement.querySelector('.error-message');
-        if (errorDiv) {
-          errorDiv.classList.add('hidden');
-          field.classList.remove('border-red-500');
-        }
+        const errorDiv = field.nextElementSibling;
+        errorDiv.classList.add('hidden');
+        field.classList.remove('border-red-500');
       });
     });
     
@@ -427,68 +190,61 @@ document.addEventListener("DOMContentLoaded", function() {
       if (isValid) {
         // Show loading spinner
         submitBtn.disabled = true;
-        submitText.textContent = 'Envoi en cours...';
-        submitSpinner.classList.remove('hidden');
+        spinner.classList.remove('hidden');
         
-        const formData = new FormData(contactForm);
+        // Configuration EmailJS - REMPLACER PAR VOS PROPRES IDs
+        // Pour utiliser EmailJS:
+        // 1. Créez un compte sur https://www.emailjs.com/
+        // 2. Configurez un service email (Gmail, Outlook, etc.)
+        // 3. Créez un template d'email
+        // 4. Remplacez 'YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', 'YOUR_PUBLIC_KEY'
         
-        // Pour Netlify Forms
-        if (contactForm.hasAttribute('netlify')) {
-          fetch('/', {
-            method: 'POST',
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams(formData).toString()
-          })
-          .then(response => {
-            if (response.ok) {
-              showAlert('Message envoyé avec succès!', 'success');
+        const templateParams = {
+          from_name: document.getElementById('name').value,
+          from_email: document.getElementById('email').value,
+          subject: document.getElementById('subject').value,
+          message: document.getElementById('message').value
+        };
+        
+        // Vérifier si EmailJS est chargé
+        if (typeof emailjs !== 'undefined') {
+          emailjs.send('service_rv3looo', 'template_kutkjkw', templateParams, '1MunetjMpfBPxbHRg')
+            .then(function(response) {
+              console.log('SUCCESS!', response.status, response.text);
+              formStatus.textContent = "Message envoyé avec succès!";
+              formStatus.classList.add('text-green-600', 'dark:text-green-400');
               contactForm.reset();
-            } else {
-              showAlert('Une erreur s\'est produite. Veuillez réessayer.', 'error');
-            }
-          })
-          .catch(error => {
-            console.error('Error:', error);
-            showAlert('Une erreur s\'est produite. Veuillez réessayer.', 'error');
-          })
-          .finally(() => {
-            submitBtn.disabled = false;
-            submitText.textContent = 'Envoyer le message';
-            submitSpinner.classList.add('hidden');
-          });
+            }, function(error) {
+              console.log('FAILED...', error);
+              formStatus.textContent = "Une erreur s'est produite. Veuillez réessayer.";
+              formStatus.classList.add('text-red-600', 'dark:text-red-400');
+            })
+            .finally(() => {
+              spinner.classList.add('hidden');
+              setTimeout(() => {
+                submitBtn.disabled = false;
+                formStatus.textContent = "";
+                formStatus.classList.remove('text-green-600', 'dark:text-green-400', 'text-red-600', 'dark:text-red-400');
+              }, 3000);
+            });
         } else {
-          // Pour Formspree ou autres services
-          fetch(contactForm.action, {
-            method: 'POST',
-            body: formData,
-            headers: {
-              'Accept': 'application/json'
-            }
-          })
-          .then(response => {
-            if (response.ok) {
-              showAlert('Message envoyé avec succès!', 'success');
-              contactForm.reset();
-            } else {
-              showAlert('Une erreur s\'est produite. Veuillez réessayer.', 'error');
-            }
-          })
-          .catch(error => {
-            console.error('Error:', error);
-            showAlert('Une erreur s\'est produite. Veuillez réessayer.', 'error');
-          })
-          .finally(() => {
-            submitBtn.disabled = false;
-            submitText.textContent = 'Envoyer le message';
-            submitSpinner.classList.add('hidden');
-          });
+          // Fallback si EmailJS n'est pas chargé
+          console.error('EmailJS not loaded');
+          formStatus.textContent = "Service d'envoi non configuré. Veuillez configurer EmailJS.";
+          formStatus.classList.add('text-red-600', 'dark:text-red-400');
+          spinner.classList.add('hidden');
+          submitBtn.disabled = false;
+          
+          setTimeout(() => {
+            formStatus.textContent = "";
+            formStatus.classList.remove('text-red-600', 'dark:text-red-400');
+          }, 5000);
         }
       }
     });
     
     function validateField(field) {
-      const errorDiv = field.parentElement.querySelector('.error-message');
-      if (!errorDiv) return true;
+      const errorDiv = field.nextElementSibling;
       
       // Check if field is empty
       if (field.required && !field.value.trim()) {
@@ -515,60 +271,18 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }
 
-  // ---------- Alert System ----------
-  function showAlert(message, type = 'info', duration = 5000) {
-    const alertContainer = document.getElementById('alert-container');
-    if (!alertContainer) return;
-    
-    const alert = document.createElement('div');
-    alert.className = `p-4 rounded-lg shadow-lg transform transition-all duration-300 translate-x-full opacity-0 ${
-      type === 'success' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' : 
-      type === 'error' ? 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200' :
-      'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'
-    }`;
-    
-    alert.innerHTML = `
-      <div class="flex items-center">
-        <i class="bx ${type === 'success' ? 'bx-check-circle' : type === 'error' ? 'bx-x-circle' : 'bx-info-circle'} text-xl mr-2"></i>
-        <span>${message}</span>
-        <button onclick="this.parentElement.parentElement.remove()" class="ml-auto text-xl">
-          <i class="bx bx-x"></i>
-        </button>
-      </div>
-    `;
-    
-    alertContainer.appendChild(alert);
-    
-    // Animate in
-    setTimeout(() => {
-      alert.classList.remove('translate-x-full', 'opacity-0');
-    }, 10);
-    
-    // Auto remove
-    setTimeout(() => {
-      alert.classList.add('translate-x-full', 'opacity-0');
-      setTimeout(() => {
-        if (alert.parentNode) {
-          alert.remove();
-        }
-      }, 300);
-    }, duration);
-  }
-
-  // ---------- Load Data Based on Current Page ----------
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  // ---------- Alert Message Auto-Dismiss ----------
+  const alertMessages = document.querySelectorAll('.alert-message');
   
-  if (currentPage === 'index.html' || currentPage === '') {
-    loadJSON('skills.json').then(renderSkills).then(initSkillAnimation);
-    loadJSON('projects.json').then(renderProjects);
-  } else if (currentPage === 'projects.html') {
-    loadJSON('projects.json').then(renderProjects);
-  } else if (currentPage === 'experiences.html') {
-    loadJSON('experiences.json').then(renderExperiences);
-  } else if (currentPage === 'education.html') {
-    loadJSON('education.json').then(renderEducation);
-  } else if (currentPage === 'contact.html') {
-    initContactForm();
+  if (alertMessages.length > 0) {
+    alertMessages.forEach(alert => {
+      setTimeout(() => {
+        alert.classList.add('opacity-0');
+        setTimeout(() => {
+          alert.remove();
+        }, 500);
+      }, 5000);
+    });
   }
 
   // ---------- Smooth Scroll for Anchor Links ----------
@@ -589,50 +303,185 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
-  // ---------- Initialize AOS refresh after dynamic content ----------
-  setTimeout(() => {
-    if (typeof AOS !== 'undefined') {
-      AOS.refresh();
+  // ---------- Page Transitions ----------
+  const links = document.querySelectorAll('a:not([target="_blank"]):not([href^="#"])');
+  
+  links.forEach(link => {
+    link.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      
+      // Skip if modifier keys are pressed or it's an external link
+      if (e.metaKey || e.ctrlKey || href.startsWith('http')) return;
+      
+      e.preventDefault();
+      
+      document.body.classList.add('opacity-0');
+      
+      setTimeout(() => {
+        window.location.href = href;
+      }, 300);
+    });
+  });
+
+  // ---------- Image Lazy Loading ----------
+  if ('loading' in HTMLImageElement.prototype) {
+    const images = document.querySelectorAll('img[loading="lazy"]');
+    images.forEach(img => {
+      img.src = img.dataset.src;
+    });
+  } else {
+    // Fallback for browsers that don't support native lazy loading
+    const script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
+    document.body.appendChild(script);
+  }
+
+  // ---------- Typewriter Effect ----------
+  function typeWriter(element, text, speed = 100) {
+    let i = 0;
+    element.innerHTML = '';
+    
+    function type() {
+      if (i < text.length) {
+        element.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(type, speed);
+      }
     }
-  }, 1000);
+    
+    type();
+  }
+
+  const heroTitle = document.querySelector('h1');
+  if (heroTitle) {
+    const originalText = heroTitle.innerHTML;
+    typeWriter(heroTitle, originalText, 70);
+  }
+
+  // ---------- Parallax Effect ----------
+  window.addEventListener('scroll', function() {
+    const scrolled = window.scrollY;
+    const heroSection = document.querySelector('section:first-of-type');
+    
+    if (heroSection) {
+      const background = heroSection.querySelector('div');
+      background.style.transform = `translateY(${scrolled * 0.3}px)`;
+    }
+  });
+
+  // ---------- Mouse Move Effects ----------
+  const profileImg = document.querySelector('.rounded-full.w-full.h-full');
+  
+  if (profileImg) {
+    document.addEventListener('mousemove', function(e) {
+      const x = (window.innerWidth / 2 - e.pageX) / 30;
+      const y = (window.innerHeight / 2 - e.pageY) / 30;
+      
+      profileImg.style.transform = `translateX(${x}px) translateY(${y}px)`;
+    });
+  }
+
+  // ---------- Animation on elements when they come into view ----------
+  function animateOnScroll() {
+    const elements = document.querySelectorAll('.animate-on-scroll');
+    
+    elements.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      const isVisible = rect.top <= window.innerHeight * 0.8;
+      
+      if (isVisible) {
+        el.classList.add('animated');
+      }
+    });
+  }
+  
+  // Add animate-on-scroll class to elements you want to animate
+  document.querySelectorAll('.card-hover').forEach(el => {
+    el.classList.add('animate-on-scroll');
+  });
+  
+  // Run on scroll
+  window.addEventListener('scroll', animateOnScroll);
+  animateOnScroll(); // Run once on page load
+
+  // ---------- Toast Notifications ----------
+  function showToast(message, type = 'info', duration = 3000) {
+    const toast = document.createElement('div');
+    toast.className = `toast ${type === 'error' ? 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200' : 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'}`;
+    toast.innerHTML = `
+      <div class="flex items-center">
+        <i class="bx ${type === 'error' ? 'bx-x-circle' : 'bx-check-circle'} text-xl mr-2"></i>
+        <span>${message}</span>
+      </div>
+    `;
+    
+    document.body.appendChild(toast);
+    
+    // Make the toast visible
+    setTimeout(() => {
+      toast.classList.add('show');
+    }, 10);
+    
+    // Remove the toast after duration
+    setTimeout(() => {
+      toast.classList.remove('show');
+      setTimeout(() => {
+        document.body.removeChild(toast);
+      }, 300);
+    }, duration);
+  }
+
+  // Example of using toast (uncomment to test)
+  // showToast('Bienvenue sur mon portfolio!', 'info', 3000);
 });
 
-// Export functions for global access if needed
-window.showAlert = function(message, type = 'info', duration = 5000) {
-  const alertContainer = document.getElementById('alert-container');
-  if (!alertContainer) return;
+// Gestion du défilement des compétences
+document.addEventListener('DOMContentLoaded', function() {
+  const skillsContainer = document.querySelector('.skills-container');
+  if (!skillsContainer) return;
   
-  const alert = document.createElement('div');
-  alert.className = `p-4 rounded-lg shadow-lg transform transition-all duration-300 translate-x-full opacity-0 ${
-    type === 'success' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' : 
-    type === 'error' ? 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200' :
-    'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'
-  }`;
+  const scrollWrapper = skillsContainer.querySelector('.skills-scroll-wrapper');
   
-  alert.innerHTML = `
-    <div class="flex items-center">
-      <i class="bx ${type === 'success' ? 'bx-check-circle' : type === 'error' ? 'bx-x-circle' : 'bx-info-circle'} text-xl mr-2"></i>
-      <span>${message}</span>
-      <button onclick="this.parentElement.parentElement.remove()" class="ml-auto text-xl">
-        <i class="bx bx-x"></i>
-      </button>
-    </div>
-  `;
+  // Variables pour le défilement manuel
+  let isScrolling = false;
+  let startY;
+  let scrollTop;
   
-  alertContainer.appendChild(alert);
+  // Gestion du défilement manuel au survol
+  skillsContainer.addEventListener('mousedown', (e) => {
+    isScrolling = true;
+    skillsContainer.style.cursor = 'grabbing';
+    startY = e.pageY - skillsContainer.offsetTop;
+    scrollTop = skillsContainer.scrollTop;
+    e.preventDefault();
+  });
   
-  // Animate in
-  setTimeout(() => {
-    alert.classList.remove('translate-x-full', 'opacity-0');
-  }, 10);
+  document.addEventListener('mouseup', () => {
+    isScrolling = false;
+    skillsContainer.style.cursor = 'grab';
+  });
   
-  // Auto remove
-  setTimeout(() => {
-    alert.classList.add('translate-x-full', 'opacity-0');
-    setTimeout(() => {
-      if (alert.parentNode) {
-        alert.remove();
-      }
-    }, 300);
-  }, duration);
-};
+  document.addEventListener('mousemove', (e) => {
+    if (!isScrolling) return;
+    const y = e.pageY - skillsContainer.offsetTop;
+    const walkY = (y - startY) * 1.5; // Multiplicateur pour accélérer le défilement
+    skillsContainer.scrollTop = scrollTop - walkY;
+  });
+  
+  // Ajuster l'animation en fonction du nombre de compétences
+  const skillItems = document.querySelectorAll('.skill-icon-container');
+  const itemCount = skillItems.length / 2; // Divisé par 2 car nous avons dupliqué les éléments
+  
+  // Si on a beaucoup d'éléments, ralentir l'animation
+  if (itemCount > 6) {
+    const animationDuration = Math.min(30, itemCount * 2.5);
+    scrollWrapper.style.animationDuration = `${animationDuration}s`;
+  }
+  
+  // Créer un clone des items à la fin pour un défilement continu sans saut
+  const firstGridItems = scrollWrapper.querySelector('.grid:first-child');
+  const lastGridItems = scrollWrapper.querySelector('.grid:last-child');
+  
+  // S'assurer que les deux grilles ont exactement le même contenu
+  lastGridItems.innerHTML = firstGridItems.innerHTML;
+});

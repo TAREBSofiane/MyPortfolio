@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact - Sofiane TAREB | Portfolio</title>
+  <title>Me Contacter | Sofiane TAREB</title>
   <!-- Tailwind CSS et plugins -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -48,59 +48,52 @@
       }
     }
   </script>
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="css/style.css">
-  <!-- BoxIcons -->
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-  <!-- AOS (Animate On Scroll) -->
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Animation On Scroll -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Boxicons -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="./css/style.css">
 </head>
-
-<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white font-sans antialiased transition-colors duration-300">
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200 min-h-screen flex flex-col transition-colors duration-300">
   <!-- Preloader -->
-  <div id="preloader" class="fixed inset-0 bg-white dark:bg-gray-900 flex items-center justify-center z-50 transition-opacity duration-500">
-    <div class="text-center">
-      <div class="w-16 h-16 border-4 border-primary-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-      <p class="text-lg text-gray-600 dark:text-gray-300">Chargement...</p>
-    </div>
+  <div id="preloader" class="fixed inset-0 z-50 flex items-center justify-center bg-white dark:bg-gray-900 transition-opacity duration-500">
+    <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-primary-600 border-solid"></div>
   </div>
 
-  <!-- Navigation -->
-  <nav class="bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 fixed w-full top-0 z-40 transition-colors duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between h-16">
-        <div class="flex items-center">
-          <a href="index.html" class="flex-shrink-0 flex items-center">
-            <span class="text-2xl font-bold bg-gradient-to-r from-primary-600 to-primary-700 bg-clip-text text-transparent">ST</span>
-          </a>
-        </div>
-        
-        <!-- Navigation desktop -->
-        <div class="hidden md:flex items-center space-x-8">
-          <a href="index.html" class="nav-link text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 px-3 py-2 transition-colors duration-300">Accueil</a>
-          <a href="experiences.html" class="nav-link text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 px-3 py-2 transition-colors duration-300">Expériences</a>
-          <a href="education.html" class="nav-link text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 px-3 py-2 transition-colors duration-300">Éducation</a>
-          <a href="projects.html" class="nav-link text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 px-3 py-2 transition-colors duration-300">Projets</a>
-          <a href="contact.html" class="nav-link active text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 px-3 py-2 transition-colors duration-300">Contact</a>
-          <!-- Dark Mode Toggle -->
-          <button id="dark-mode-toggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300">
-            <i class="bx bx-moon text-xl dark:hidden"></i>
-            <i class="bx bx-sun text-xl hidden dark:block"></i>
-          </button>
-        </div>
+  <!-- Navbar -->
+  <nav class="bg-white dark:bg-gray-800 shadow-lg fixed w-full z-10 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="./index.html" class="text-2xl font-bold flex items-center">
+        <span class="text-primary-600 dark:text-primary-400">Sofiane's Portfolio</span>
+      </a>
 
-        <!-- Menu mobile button -->
-        <div class="md:hidden flex items-center space-x-2">
-          <button id="dark-mode-toggle-mobile" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700">
-            <i class="bx bx-moon text-xl dark:hidden"></i>
-            <i class="bx bx-sun text-xl hidden dark:block"></i>
-          </button>
-          <button id="mobile-menu-button" class="focus:outline-none">
-            <i class="bx bx-menu text-2xl"></i>
-          </button>
-        </div>
+      <!-- Desktop Links -->
+      <div class="hidden md:flex space-x-6">
+        <a href="./index.html" class="nav-link hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Accueil</a>
+        <a href="./experiences.html" class="nav-link hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Expériences</a>
+        <a href="./education.html" class="nav-link hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Éducation</a>
+        <a href="./projects.html" class="nav-link hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Projets</a>
+        <a href="./contact.html" class="nav-link hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Contact</a>
+        <button id="theme-toggle" class="p-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none transition-colors">
+          <i class="bx bx-sun text-xl dark:hidden"></i>
+          <i class="bx bx-moon text-xl hidden dark:block"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Hamburger -->
+      <div class="md:hidden flex items-center space-x-4">
+        <button id="theme-toggle-mobile" class="p-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none transition-colors">
+          <i class="bx bx-sun text-xl dark:hidden"></i>
+          <i class="bx bx-moon text-xl hidden dark:block"></i>
+        </button>
+        <button id="mobile-menu-button" class="focus:outline-none text-2xl">
+          <i class="bx bx-menu"></i>
+        </button>
       </div>
     </div>
 
@@ -117,17 +110,21 @@
             <i class="bx bx-x"></i>
           </button>
         </div>
-        <a href="index.html" class="mobile-nav-link py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Accueil</a>
-        <a href="experiences.html" class="mobile-nav-link py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Expériences</a>
-        <a href="education.html" class="mobile-nav-link py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Éducation</a>
-        <a href="projects.html" class="mobile-nav-link py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Projets</a>
-        <a href="contact.html" class="mobile-nav-link py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Contact</a>
+        <a href="./index.html" class="mobile-nav-link py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Accueil</a>
+        <a href="./experiences.html" class="mobile-nav-link py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Expériences</a>
+        <a href="./education.html" class="mobile-nav-link py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Éducation</a>
+        <a href="./projects.html" class="mobile-nav-link py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Projets</a>
+        <a href="./contact.html" class="mobile-nav-link py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Contact</a>
       </div>
     </div>
   </nav>
 
-  <!-- Alert container for notifications -->
-  <div id="alert-container" class="fixed top-20 right-4 z-50 space-y-2"></div>
+  <!-- Flashes -->
+  <div class="pt-20 max-w-4xl mx-auto px-4">
+    
+      
+    
+  </div>
 
   <!-- Back to top button -->
   <button id="back-to-top" class="fixed bottom-6 right-6 p-3 rounded-full bg-primary-600 text-white shadow-lg z-[9999] opacity-0 invisible transition-all duration-300 hover:bg-primary-700">
@@ -138,161 +135,156 @@
   <div class="flex flex-col">
     <!-- Main content -->
     <main class="flex-grow">
-      <section class="bg-gradient-to-b from-gray-300 to-white dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div class="text-center" data-aos="fade-up">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">Prêt à travailler ensemble ?</h2>
-            <p class="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
-              N'hésitez pas à me contacter pour discuter de votre projet ou pour toute question.
-            </p>
-          </div>
-        </div>
-      </section>
+      
+<section class="bg-gradient-to-b from-gray-300 to-white dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="text-center" data-aos="fade-up">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Prêt à travailler ensemble ?</h2>
+      <p class="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
+        N'hésitez pas à me contacter pour discuter de votre projet ou pour toute question.
+      </p>
+    </div>
+  </div>
+</section>
 
-      <section class="py-8 bg-white dark:bg-gray-800 transition-colors duration-300" data-aos="fade-in" data-aos-delay="200" dat-aos-duration="1000">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="flex flex-col md:flex-row gap-12" data-aos="fade-in" data-aos-delay="200" dat-aos-duration="1000">
-            <!-- Formulaire de contact -->
-            <div class="md:w-7/12" data-aos="md:fade-right">
-              <div class="bg-gradient-to-br from-gray-200 to-gray-50 dark:from-gray-800 dark:to-gray-700 py-8 transition-colors duration-300 rounded-2xl shadow-xl p-8">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6">Contactez-moi</h2>
-                <p class="text-gray-600 dark:text-gray-400 mb-8">
-                  Vous avez un projet en tête, une question ou une proposition ? N'hésitez pas à m'envoyer un message !
-                </p>
-                
+<section class="py-8 bg-white dark:bg-gray-800 transition-colors duration-300" data-aos="fade-in" data-aos-delay="200" dat-aos-duration="1000">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row gap-12" data-aos="fade-in" data-aos-delay="200" dat-aos-duration="1000">
+      <!-- Formulaire de contact -->
+       
+      <div class="md:w-7/12" data-aos="md:fade-right">
+        <div class="bg-gradient-to-br from-gray-200 to-gray-50 dark:from-gray-800 dark:to-gray-700 py-8 transition-colors duration-300 rounded-2xl shadow-xl p-8">
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">Contactez-moi</h2>
+          <p class="text-gray-600 dark:text-gray-400 mb-8">
+            Vous avez un projet en tête, une question ou une proposition ? N'hésitez pas à m'envoyer un message !
+          </p>
                 <!-- Formulaire de contact -->
-                <form id="contact-form" name="contact" netlify netlify-honeypot="bot-field" method="post" class="space-y-6" novalidate>
-                  <!-- Champ honeypot caché pour éviter le spam -->
-                  <div style="display: none;">
-                    <label>Ne pas remplir si vous êtes humain : <input name="bot-field" /></label>
-                  </div>
-                  <div class="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label for="name" class="block text-sm font-medium mb-2">Nom</label>
-                      <div class="relative">
-                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                          <i class="bx bx-user text-gray-500"></i>
-                        </div>
-                        <input id="name" name="name" type="text" required
-                              class="block w-full pl-10 pr-3 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white dark:bg-gray-700 transition-colors duration-300">
-                        <div class="error-message hidden mt-1 text-sm text-red-600 dark:text-red-400"></div>
-                      </div>
+          <form id="contact-form" action="./contact.html" method="post" class="space-y-6" novalidate>
+            <input type="hidden" name="csrf_token" value="">
+              <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label for="name" class="block text-sm font-medium mb-2">Nom</label>
+                  <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <i class="bx bx-user text-gray-500"></i>
                     </div>
-                    <div>
-                      <label for="email" class="block text-sm font-medium mb-2">Email</label>
-                      <div class="relative">
-                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                          <i class="bx bx-envelope text-gray-500"></i>
-                        </div>
-                        <input id="email" name="email" type="email" required
-                              class="block w-full pl-10 pr-3 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white dark:bg-gray-700 transition-colors duration-300">
-                        <div class="error-message hidden mt-1 text-sm text-red-600 dark:text-red-400"></div>
-                      </div>
-                    </div>
+                    <input id="name" name="name" type="text" required
+                          class="block w-full pl-10 pr-3 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white dark:bg-gray-700 transition-colors duration-300">
+                    <div class="error-message hidden mt-1 text-sm text-red-600 dark:text-red-400"></div>
                   </div>
-                  
-                  <div>
-                    <label for="subject" class="block text-sm font-medium mb-2">Sujet</label>
-                    <div class="relative">
-                      <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <i class="bx bx-tag text-gray-500"></i>
-                      </div>
-                      <input id="subject" name="subject" type="text" required
-                            class="block w-full pl-10 pr-3 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white dark:bg-gray-700 transition-colors duration-300">
-                      <div class="error-message hidden mt-1 text-sm text-red-600 dark:text-red-400"></div>
+                </div>
+                <div>
+                  <label for="email" class="block text-sm font-medium mb-2">Email</label>
+                  <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <i class="bx bx-envelope text-gray-500"></i>
                     </div>
+                    <input id="email" name="email" type="email" required
+                          class="block w-full pl-10 pr-3 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white dark:bg-gray-700 transition-colors duration-300">
+                    <div class="error-message hidden mt-1 text-sm text-red-600 dark:text-red-400"></div>
                   </div>
-                  
-                  <div>
-                    <label for="message" class="block text-sm font-medium mb-2">Message</label>
-                    <div class="relative">
-                      <div class="absolute top-3 left-0 pl-3 flex items-start pointer-events-none">
-                        <i class="bx bx-message text-gray-500"></i>
-                      </div>
-                      <textarea id="message" name="message" rows="6" required
-                               class="block w-full pl-10 pr-3 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white dark:bg-gray-700 transition-colors duration-300 resize-none"></textarea>
-                      <div class="error-message hidden mt-1 text-sm text-red-600 dark:text-red-400"></div>
-                    </div>
+                </div>
+              </div>
+              
+              <div>
+                <label for="subject" class="block text-sm font-medium mb-2">Sujet</label>
+                <div class="relative">
+                  <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <i class="bx bx-chat text-gray-500"></i>
                   </div>
-                  
-                  <button type="submit" id="submit-btn"
-                         class="w-full bg-primary-600 hover:bg-primary-700 disabled:bg-gray-400 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-300 flex items-center justify-center">
-                    <span id="submit-text">Envoyer le message</span>
-                    <i class="bx bx-paper-plane ml-2"></i>
-                    <div id="submit-spinner" class="hidden ml-2 w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                  </button>
-                </form>
+                  <input id="subject" name="subject" type="text" required
+                        class="block w-full pl-10 pr-3 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white dark:bg-gray-700 transition-colors duration-300">
+                  <div class="error-message hidden mt-1 text-sm text-red-600 dark:text-red-400"></div>
+                </div>
+              </div>
+              
+              <div>
+                <label for="message" class="block text-sm font-medium mb-2">Message</label>
+                <div class="relative">
+                  <div class="absolute top-3 left-3 flex items-start pointer-events-none">
+                    <i class="bx bx-pencil text-gray-500"></i>
+                  </div>
+                  <textarea id="message" name="message" rows="5" required
+                            class="block w-full pl-10 pr-3 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white dark:bg-gray-700 transition-colors duration-300"></textarea>
+                  <div class="error-message hidden mt-1 text-sm text-red-600 dark:text-red-400"></div>
+                </div>
+              </div>
+              
+              <div class="flex items-center justify-between pt-2">
+                <div id="form-status" class="text-sm"></div>
+                <button type="submit" id="submit-btn" 
+                        class="px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg shadow-md hover:shadow-lg transition-all duration-300 flex items-center">
+                  <span>Envoyer le message</span>
+                  <i class="bx bx-send ml-2"></i>
+                  <div id="spinner" class="hidden ml-2 w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                </button>
+              </div>
+          </form>
+        </div>
+      </div>
+      
+      <!-- Informations de contact -->
+      <div class="md:w-5/12" data-aos="md:fade-left">
+        <div class="bg-gradient-to-bl from-gray-200 to-gray-50 dark:from-gray-800 dark:to-gray-700 py-8 transition-colors duration-300 rounded-2xl shadow-xl p-8 h-full">
+          <h3 class="text-2xl font-bold mb-6">Informations</h3>
+          
+          <!-- Différents moyens de contact -->
+          <div class="space-y-6">
+            <div class="flex items-start">
+              <div class="flex-shrink-0 bg-primary-100 dark:bg-primary-900 p-3 rounded-lg">
+                <i class="bx bx-envelope text-primary-600 dark:text-primary-400 text-xl"></i>
+              </div>
+              <div class="ml-4">
+                <h4 class="text-lg font-medium">Email</h4>
+                <p class="text-gray-600 dark:text-gray-400">sofianetareb.pro@gmail.com</p>
               </div>
             </div>
-
-            <!-- Informations de contact -->
-            <div class="md:w-5/12" data-aos="md:fade-left">
-              <div class="space-y-8">
-                <!-- Contact info cards -->
-                <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg">
-                  <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center mr-4">
-                      <i class="bx bx-envelope text-primary-600 dark:text-primary-400 text-xl"></i>
-                    </div>
-                    <div>
-                      <h3 class="text-lg font-medium">Email</h3>
-                      <p class="text-gray-600 dark:text-gray-400">Envoyez-moi un message</p>
-                    </div>
-                  </div>
-                  <a href="mailto:sofianetareb.pro@gmail.com" class="text-primary-600 dark:text-primary-400 hover:underline">
-                    sofianetareb.pro@gmail.com
+            
+            <div class="flex items-start">
+              <div class="flex-shrink-0 bg-primary-100 dark:bg-primary-900 p-3 rounded-lg">
+                <i class="bx bx-map text-primary-600 dark:text-primary-400 text-xl"></i>
+              </div>
+              <div class="ml-4">
+                <h4 class="text-lg font-medium">Localisation</h4>
+                <p class="text-gray-600 dark:text-gray-400">Rennes, France</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="flex-shrink-0 bg-primary-100 dark:bg-primary-900 p-3 rounded-lg">
+                <i class="bx bx-link text-primary-600 dark:text-primary-400 text-xl"></i>
+              </div>
+              <div class="ml-4">
+                <h4 class="text-lg font-medium">Réseaux sociaux</h4>
+                <div class="flex space-x-3 mt-2">
+                  <a href="https://github.com/TAREBSofiane" target="_blank" class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400">
+                    <i class="bx bxl-github text-2xl"></i>
                   </a>
-                </div>
-
-                <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg">
-                  <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center mr-4">
-                      <i class="bx bxl-linkedin text-primary-600 dark:text-primary-400 text-xl"></i>
-                    </div>
-                    <div>
-                      <h3 class="text-lg font-medium">LinkedIn</h3>
-                      <p class="text-gray-600 dark:text-gray-400">Connectons-nous</p>
-                    </div>
-                  </div>
-                  <a href="https://linkedin.com/in/sofianetareb" target="_blank" class="text-primary-600 dark:text-primary-400 hover:underline">
-                    linkedin.com/in/sofianetareb
+                  <a href="https://linkedin.com/in/sofianetareb" target="_blank" class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400">
+                    <i class="bx bxl-linkedin text-2xl"></i>
                   </a>
-                </div>
-
-                <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg">
-                  <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center mr-4">
-                      <i class="bx bxl-github text-primary-600 dark:text-primary-400 text-xl"></i>
-                    </div>
-                    <div>
-                      <h3 class="text-lg font-medium">GitHub</h3>
-                      <p class="text-gray-600 dark:text-gray-400">Consultez mes projets</p>
-                    </div>
-                  </div>
-                  <a href="https://github.com/TAREBSofiane" target="_blank" class="text-primary-600 dark:text-primary-400 hover:underline">
-                    github.com/TAREBSofiane
+                  <a href="https://twitter.com/yourusername" target="_blank" class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400">
+                    <i class="bx bxl-twitter text-2xl"></i>
                   </a>
-                </div>
-
-                <!-- Temps de réponse -->
-                <div class="bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900 dark:to-primary-800 p-6 rounded-xl">
-                  <div class="flex items-center mb-4">
-                    <i class="bx bx-time text-primary-600 dark:text-primary-400 text-2xl mr-3"></i>
-                    <h3 class="text-lg font-medium">Temps de réponse</h3>
-                  </div>
-                  <p class="text-gray-700 dark:text-gray-300">
-                    Je réponds généralement sous 24h. Pour les demandes urgentes, n'hésitez pas à le mentionner dans votre message.
-                  </p>
                 </div>
               </div>
             </div>
           </div>
+          
+          <!-- Carte ou illustration -->
+          <div class="mt-8 bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg h-48 relative">
+            <img src="./images/map.jpeg" alt="Localisation" class="w-full h-48 object-cover transform transition-transform duration-500 hover:scale-110">
+          </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
+
     </main>
     
     <!-- Footer -->
-    <footer class="py-7 px-6 bg-gradient-to-b from-gray-300 to-gray-50 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300" data-aos="fade-up">
+    <footer class="py-7 px-6 bg-gradient-to-b from-gray-300 to-gray-50 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300"  data-aos="fade-up">
       <div class="max-w-7xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-3 items-center gap-4">
           <!-- Colonne 1 : votre nom -->
@@ -303,7 +295,7 @@
 
           <!-- Colonne 2 : le bouton centré -->
           <div class="flex justify-center">
-            <a href="files/CV_Sofiane_TAREB.pdf" target="_blank" 
+            <a href="./files/CV_Sofiane_TAREB.pdf" target="_blank" 
               class="px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 inline-flex items-center">
               <i class="bx bx-download mr-2"></i>
               Télécharger mon CV
@@ -342,7 +334,9 @@
       mirror: false,
     });
   </script>
+  <!-- EmailJS pour le formulaire de contact (site statique) -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="js/main.js"></script>
+  <script src="./js/main.js"></script>
 </body>
 </html>
