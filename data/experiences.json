@@ -1,0 +1,32 @@
+[
+  {
+    "title": "STAGE - Data Scientist / AI Engineer",
+    "description": "Stage réalisé au sein de Rennes Métropole, visant à concevoir et déployer un agent intelligent basé sur un système RAG (Retrieval-Augmented Generation) pour améliorer les services internes.",
+    "missions": [
+      "Conception et déploiement d'un agent IAG basé sur un système RAG qui s'appuie sur les bases documentaires de différents services.",
+      "Exploration et structuration de bases de connaissances hétérogènes (FAQ, documents internes, tickets, etc.) en vue de leur intégration dans le système RAG.",
+      "Conception d'une application destinée à automatiser le traitement des documents et à centraliser la gestion des bases de connaissances.",
+      "Développement d'applications et interfaces web pour différents cas d'usages avec python.",
+      "Participation à la définition des cas d'usage métiers et à la validation des prototypes avec les équipes fonctionnelles."
+    ],
+    "image": "images/Rennes_métropole.jpeg",
+    "skills": ["RAG", "Python", "Flask", "Docker", "GitLab", "CI/CD"],
+    "institution": "Rennes métropole - Rennes",
+    "period": "Fév. 2025 - Aoû. 2025",
+    "link": "https://metropole.rennes.fr/"
+  },
+  {
+    "title": "STAGE - Data Analyst",
+    "description": "Stage réalisé chez TA-Consulting, consacré à l'analyse et au traitement de données dans le cadre d'un projet SFR portant sur l'étude de l'implantation des tours de réseau.",
+    "missions": [
+      "Participation à l'acquisition, au traitement et à la structuration de données issues de différentes sources pour les rendre exploitables à des fins d'analyse.",
+      "Analyse et exploration des données à l'aide de tableaux croisés dynamiques.",
+      "Création de visualisations cartographiques pour représenter les données."
+    ],
+    "image": "images/TAConsulting.png",
+    "skills": ["R", "Excel", "Data Visualisation"],
+    "institution": "TA-Consulting - IDF",
+    "period": "Déc. 2022",
+    "link": "https://ta-consulting.fr/"
+  }
+]

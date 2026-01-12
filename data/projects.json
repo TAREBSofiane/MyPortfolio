@@ -1,0 +1,26 @@
+[
+    {
+      "title": "MyPortfolio",
+      "description": "MyPortfolio est une application web développée en Python avec le framework Flask, structurée selon une architecture modulaire. Elle sépare distinctement la gestion des routes, les templates HTML, les fichiers statiques (CSS, JavaScript, images) et les données. Pour sécuriser le site, mon choix s'est porté sur les extensions Flask-Talisman (HTTPS, en-têtes de sécurité) et CSRF pour protéger les formulaires contre les attaques intersites... Ce site, sur lequel vous naviguez actuellement, constitue le résultat de ce projet personnel, conçu pour mettre en valeur mes compétences, mes projets, ainsi que mon parcours académique et professionnel de manière claire, interactive et accessible.",
+      "image": "images/images (1)_1746174315330.jpeg",
+      "link": "https://github.com/TAREBSofiane/MyPortfolio",
+      "technologies": ["Python", "Flask", "HTML", "CSS", "JavaScript"],
+      "category": {"id": "web", "name": "Web"}
+    },
+    {
+      "title": "Visualisation Accidents France",
+      "description": "Cette application RShiny permet d'explorer et d'analyser les données d'accidents de la route en France entre 2005 et 2016. Elle offre plusieurs visualisations et fonctionnalités pour mieux comprendre les tendances et facteurs liés aux accidents routiers.",
+      "image": "images/Visualisation_RShiny.png",
+      "link": "https://github.com/TAREBSofiane/RShiny_Accidents_France",
+      "technologies": ["R", "Shiny"],
+      "category": {"id": "data_viz", "name": "Data Visualisation"}
+    },
+    {
+      "title": "Visualisation Rennes Mobilités",
+      "description": "Ce petit projet propose une visualisation interactive des mobilités à Rennes en utilisant la bibliothèque Bokeh en Python. Le projet se concentre sur deux aspects principaux : le réseau de transport en commun STAR et la fréquentation des modes de déplacement doux (vélo/piéton) sur les grands boulevards.",
+      "image": "images/Visualisation_Bokeh.png",
+      "link": "https://github.com/TAREBSofiane/Visualisation_Bokeh",
+      "technologies": ["Python", "Bokeh", "Pandas"],
+      "category": {"id": "data_viz", "name": "Data Visualisation"}
+    }
+  ]

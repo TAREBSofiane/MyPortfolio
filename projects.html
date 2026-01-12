@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projets - Sofiane TAREB | Portfolio</title>
+  <!-- Tailwind CSS et plugins -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              200: '#c7d2fe',
+              300: '#a5b4fc',
+              400: '#818cf8',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              800: '#3730a3',
+              900: '#312e81',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['Fira Code', 'monospace'],
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.5s ease-in-out',
+            'slide-up': 'slideUp 0.5s ease-in-out',
+            'pulse-slow': 'pulse 3s infinite',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            slideUp: {
+              '0%': { transform: 'translateY(20px)', opacity: '0' },
+              '100%': { transform: 'translateY(0)', opacity: '1' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- BoxIcons -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <!-- AOS (Animate On Scroll) -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white font-sans antialiased transition-colors duration-300">
+  <!-- Preloader -->
+  <div id="preloader" class="fixed inset-0 bg-white dark:bg-gray-900 flex items-center justify-center z-50 transition-opacity duration-500">
+    <div class="text-center">
+      <div class="w-16 h-16 border-4 border-primary-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+      <p class="text-lg text-gray-600 dark:text-gray-300">Chargement...</p>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 fixed w-full top-0 z-40 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <a href="index.html" class="flex-shrink-0 flex items-center">
+            <span class="text-2xl font-bold bg-gradient-to-r from-primary-600 to-primary-700 bg-clip-text text-transparent">ST</span>
+          </a>
+        </div>
+        
+        <!-- Navigation desktop -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="index.html" class="nav-link text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 px-3 py-2 transition-colors duration-300">Accueil</a>
+          <a href="experiences.html" class="nav-link text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 px-3 py-2 transition-colors duration-300">Expériences</a>
+          <a href="education.html" class="nav-link text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 px-3 py-2 transition-colors duration-300">Éducation</a>
+          <a href="projects.html" class="nav-link active text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 px-3 py-2 transition-colors duration-300">Projets</a>
+          <a href="contact.html" class="nav-link text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 px-3 py-2 transition-colors duration-300">Contact</a>
+          <!-- Dark Mode Toggle -->
+          <button id="dark-mode-toggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300">
+            <i class="bx bx-moon text-xl dark:hidden"></i>
+            <i class="bx bx-sun text-xl hidden dark:block"></i>
+          </button>
+        </div>
+
+        <!-- Menu mobile button -->
+        <div class="md:hidden flex items-center space-x-2">
+          <button id="dark-mode-toggle-mobile" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700">
+            <i class="bx bx-moon text-xl dark:hidden"></i>
+            <i class="bx bx-sun text-xl hidden dark:block"></i>
+          </button>
+          <button id="mobile-menu-button" class="focus:outline-none">
+            <i class="bx bx-menu text-2xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Semi‑transparent backdrop -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-20 backdrop-blur-sm"></div>
+
+    <!-- Sliding menu panel -->
+    <div id="mobile-menu"
+         class="fixed top-0 right-0 h-full w-3/4 max-w-xs bg-white dark:bg-gray-800 shadow-2xl perspective transform-gpu translate-x-full transition-transform duration-500 ease-out z-30">
+      <div class="p-6 grid gap-4">
+        <div class="flex justify-between items-center mb-6">
+          <span class="text-xl font-bold">Menu</span>
+          <button id="close-mobile-menu" class="focus:outline-none text-2xl">
+            <i class="bx bx-x"></i>
+          </button>
+        </div>
+        <a href="index.html" class="mobile-nav-link py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Accueil</a>
+        <a href="experiences.html" class="mobile-nav-link py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Expériences</a>
+        <a href="education.html" class="mobile-nav-link py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Éducation</a>
+        <a href="projects.html" class="mobile-nav-link py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Projets</a>
+        <a href="contact.html" class="mobile-nav-link py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Alert container for notifications -->
+  <div id="alert-container" class="fixed top-20 right-4 z-50 space-y-2"></div>
+
+  <!-- Back to top button -->
+  <button id="back-to-top" class="fixed bottom-6 right-6 p-3 rounded-full bg-primary-600 text-white shadow-lg z-[9999] opacity-0 invisible transition-all duration-300 hover:bg-primary-700">
+    <i class="bx bx-up-arrow-alt text-xl"></i>
+  </button>
+
+  <!-- Contenu principal avec structure flex -->
+  <div class="flex flex-col">
+    <!-- Main content -->
+    <main class="flex-grow">
+      <section class="bg-gradient-to-b from-gray-300 to-white dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div class="text-center" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Mes Projets</h2>
+            <p class="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
+              Découvrez les projets sur lesquels j'ai travaillé et les technologies que j'ai utilisées
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-8 bg-white dark:bg-gray-800 transition-colors duration-300" data-aos="fade-in" data-aos-delay="200" dat-aos-duration="1000">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">      
+          <!-- Filtres de projets -->
+          <div class="mb-12 flex flex-wrap justify-center gap-4" data-aos="fade-up" data-aos-delay="100">
+            <button class="filter-btn active px-4 py-2 rounded-lg bg-primary-600 text-white hover:bg-primary-700 transition-colors duration-300" data-filter="all">Tous</button>
+            <button class="filter-btn px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300" data-filter="web">Web</button>
+            <button class="filter-btn px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300" data-filter="ai">IA</button>
+            <button class="filter-btn px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300" data-filter="data">Data</button>
+            <button class="filter-btn px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300" data-filter="data_viz">Viz</button>
+          </div>
+          
+          <!-- Liste des projets - sera remplie par JavaScript -->
+          <div id="projects-container" class="grid md:grid-cols-2 gap-8">
+            <!-- Les projets seront chargés dynamiquement -->
+          </div>
+        </div>
+      </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="py-7 px-6 bg-gradient-to-b from-gray-300 to-gray-50 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300" data-aos="fade-up">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 items-center gap-4">
+          <!-- Colonne 1 : votre nom -->
+          <div class="flex flex-col items-center md:items-start">
+            <p class="text-lg font-semibold">Sofiane TAREB</p>
+            <p class="text-gray-600 dark:text-gray-400">Data Scientist / AI Engineer</p>
+          </div>
+
+          <!-- Colonne 2 : le bouton centré -->
+          <div class="flex justify-center">
+            <a href="files/CV_Sofiane_TAREB.pdf" target="_blank" 
+              class="px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 inline-flex items-center">
+              <i class="bx bx-download mr-2"></i>
+              Télécharger mon CV
+            </a>
+          </div>
+
+          <!-- Colonne 3 : vos icônes alignées à droite -->
+          <div class="flex justify-center md:justify-end space-x-4">
+            <a href="https://github.com/TAREBSofiane" target="_blank" class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors">
+              <i class="bx bxl-github text-2xl"></i>
+            </a>
+            <a href="https://linkedin.com/in/sofianetareb" target="_blank" class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors">
+              <i class="bx bxl-linkedin text-2xl"></i>
+            </a>
+            <a href="mailto:sofianetareb.pro@gmail.com" class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors">
+              <i class="bx bx-envelope text-2xl"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="mt-6 text-center text-gray-600 dark:text-gray-400">
+          &copy; 2025 Sofiane TAREB. Tous droits réservés.
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Initialize AOS with custom settings
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true,
+      mirror: false,
+    });
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

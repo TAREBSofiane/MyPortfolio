@@ -1,0 +1,421 @@
+/* Styles personnalisés pour le portfolio */
+
+/* Base */
+html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  /* Animations de transition de pages */
+  main {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  /* Scrollbar personnalisée */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  .dark ::-webkit-scrollbar-track {
+    background: #1f2937;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #6366f1;
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #4338ca;
+  }
+  
+  /* Animations du menu */
+  .perspective {
+    perspective: 1000px;
+  }
+  
+  /* Liens de navigation actifs */
+  .nav-link.active,
+  .mobile-nav-link.active {
+    color: #6366f1;
+    font-weight: 600;
+  }
+  
+  /* Image de profil flottante */
+  .floating {
+    animation: floating 3s ease-in-out infinite;
+  }
+  
+  /* Animation pour les barres de compétences */
+  .skill-progress {
+    transition: width 1.5s ease-in-out;
+  }
+  
+  /* Hover effects */
+  .project-card:hover .project-overlay {
+    opacity: 1;
+  }
+  
+  /* Feuille de contact gradient border */
+  .gradient-border {
+    position: relative;
+    border-radius: 0.75rem;
+    padding: 1px;
+    background: linear-gradient(45deg, #6366f1, #8b5cf6, #ec4899);
+  }
+  
+  .gradient-border::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 0.75rem;
+    padding: 2px;
+    background: linear-gradient(45deg, #6366f1, #8b5cf6, #ec4899);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  
+  @keyframes slideRight {
+    from { transform: translateX(-20px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+  
+  @keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+  
+  /* Typographie améliorée */
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+  }
+  
+  p {
+    line-height: 1.6;
+  }
+  
+  /* Animation de soulignement au survol */
+  .hover-underline-animation {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .hover-underline-animation::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #6366f1;
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+  }
+  
+  .hover-underline-animation:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+  
+  /* Card hover effects */
+  .card-hover {
+    transition: all 0.3s ease;
+  }
+  
+  .card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Timeline */
+  .timeline-item {
+    position: relative;
+  }
+  
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    background-color: #e5e7eb;
+    left: 0;
+    top: 0;
+  }
+  
+  .dark .timeline-item::before {
+    background-color: #374151;
+  }
+  
+  /* Toast notifications */
+  .toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+  }
+  
+  .toast.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .dark .toast {
+    background: #1f2937;
+    color: #f3f4f6;
+  }
+  
+  /* Loading spinner */
+  .spinner {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid #fff;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  /* Focus styles for accessibility */
+  input:focus, textarea:focus, button:focus, a:focus {
+    outline: 2px solid rgba(99, 102, 241, 0.5);
+    outline-offset: 2px;
+  }
+  
+  /* Ellipsis avec ligne clampée */
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  /* Preloader */
+  #preloader.fade-out {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+/* Combinaison des styles d'icônes 3D avec défilement continu */
+
+/* Container avec défilement continu */
+.skills-container {
+  position: relative;
+  overflow: hidden;
+  height: 350px;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 600px;
+  transition: all 0.3s ease;
+}
+
+.skills-scroll-wrapper {
+  animation: scrollDown 15s linear infinite;
+  position: absolute;
+  width: 100%;
+}
+
+@keyframes scrollDown {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%); /* Exactement la moitié pour un défilement parfait */
+  }
+}
+
+/* Ajustement de l'espacement entre les grilles et icônes */
+.skills-container .grid {
+  margin-bottom: 0 !important;
+  gap: 0.75rem !important; /* Réduit davantage l'espacement entre les icônes */
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Convertit l'animation en scroll manuel au survol */
+.skills-container:hover {
+  overflow-y: auto;
+  height: 420px; /* Augmente légèrement la hauteur pour indiquer la possibilité de scroll */
+}
+
+.skills-container:hover .skills-scroll-wrapper {
+  animation-play-state: paused;
+  position: static; /* Important : permet le scroll manuel */
+  transform: none !important; /* Annule toute transformation pour permettre le scroll */
+}
+
+/* Amélioration de la scrollbar */
+.skills-container::-webkit-scrollbar {
+  width: 6px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.skills-container:hover::-webkit-scrollbar {
+  opacity: 1;
+}
+
+.skills-container::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.6);
+  border-radius: 3px;
+}
+
+/* Styles pour les icônes 3D avancées */
+.skill-icon-container {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  margin-bottom: 0.25rem; /* Réduit encore plus l'espacement vertical */
+  cursor: pointer;
+}
+
+.skill-icon-wrapper {
+  transition: transform 0.6s ease-in-out;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.skill-icon-container:hover .skill-icon-wrapper {
+  transform: rotateY(180deg) rotateZ(5deg);
+}
+
+.skill-icon {
+  height: 90px; /* Légèrement réduit pour permettre plus d'icônes visibles */
+  width: 90px;
+  margin: 0 auto;
+  background: linear-gradient(145deg, #f0f0f0, #cacaca);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.1), 
+             -8px -8px 15px rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.dark .skill-icon {
+  background: linear-gradient(145deg, #2d3748, #1a202c);
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3), 
+             -8px -8px 15px rgba(255, 255, 255, 0.05);
+}
+
+.skill-icon:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 20px;
+  background: var(--tw-gradient-stops, linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(99, 102, 241, 0.1)));
+  opacity: 0.6;
+  z-index: -1;
+  transform: translateZ(-1px);
+}
+
+.skill-icon i {
+  font-size: 2.5rem;
+  color: var(--primary-color, #4F46E5);
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.skill-icon-container:hover .skill-icon i {
+  transform: scale(1.1) translateZ(20px);
+  filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.4));
+}
+
+/* Effet de relief 3D amélioré */
+.skill-icon:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.1));
+  opacity: 0.3;
+  pointer-events: none;
+  transform: translateZ(5px);
+}
+
+.dark .skill-icon:after {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
+}
+
+/* Effet de réflexion sur les icônes */
+.skill-icon:before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  right: -10%;
+  bottom: -10%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0.1) 20%,
+    transparent 60%
+  );
+  opacity: 0.5;
+  z-index: 1;
+  transform: translateZ(1px);
+  pointer-events: none;
+}
+
+.dark .skill-icon:before {
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 20%,
+    transparent 60%
+  );
+}
+
+/* Style du nom de compétence */
+.skill-name {
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.skill-icon-container:hover .skill-name {
+  transform: rotateY(180deg); /* Le texte se retourne aussi avec l'icône */
+}
