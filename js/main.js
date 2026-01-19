@@ -1,5 +1,361 @@
+// Mapping des icônes pour les compétences/technologies
+const skillIcons = {
+  'Python': 'bxl-python',
+  'Flask': 'bx-server',
+  'Docker': 'bxl-docker',
+  'GitLab': 'bxl-git',
+  'CI/CD': 'bx-git-branch',
+  'R': 'bx-code-alt',
+  'Excel': 'bx-spreadsheet',
+  'Data Visualisation': 'bx-bar-chart-alt-2',
+  'HTML': 'bxl-html5',
+  'CSS': 'bxl-css3',
+  'JavaScript': 'bxl-javascript',
+  'Shiny': 'bx-radar',
+  'Bokeh': 'bx-line-chart',
+  'Pandas': 'bx-data',
+  'RAG': 'bx-brain',
+  'Statistiques': 'bx-math',
+  'Analyse de données': 'bx-analyse',
+  'ML et DL': 'bx-chip',
+  'NLP': 'bx-message-square-dots',
+  'Econométrie': 'bx-trending-up',
+  'Analyse': 'bx-chart',
+  'Algèbre': 'bx-calculator',
+  'Statistiques et Probabilités': 'bx-bar-chart',
+  'Micro et Macroéconomie': 'bx-dollar-circle',
+  'Optimisation': 'bx-target-lock',
+  'Théorie des graphes': 'bx-network-chart',
+  'SI': 'bx-server'
+};
+
+// Fonction pour obtenir l'icône d'une compétence
+function getSkillIcon(skill) {
+  return skillIcons[skill] || 'bx-check-circle';
+}
+
+// Fonction pour charger et afficher les formations
+async function loadEducation() {
+  try {
+    const response = await fetch('./data/education.json');
+    const educationData = await response.json();
+    const container = document.getElementById('education-container');
+    
+    if (!container) return;
+    
+    container.innerHTML = educationData.map((edu, index) => `
+      <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl" data-aos="zoom-in" data-aos-delay="${(index + 1) * 100}">
+        <div class="relative overflow-hidden h-48">
+          <img src="./${edu.image}" alt="${edu.title}" class="w-full h-48 object-cover transform transition-transform duration-500 hover:scale-110">
+          <div>
+            <span class="absolute top-3 right-3 px-3 py-1 bg-primary-500 text-white text-xs font-medium rounded-full">${edu.period}</span>
+            <h3 class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent text-white p-4 text-xl font-semibold">${edu.title}</h3>
+          </div>
+        </div>
+        
+        <div class="p-6">
+          <h4 class="text-lg font-medium text-primary-600 dark:text-primary-400 mb-3">${edu.institution}</h4>
+          <div class="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+            ${edu.formation}
+          </div>
+          
+          <div class="mb-4">
+            <h5 class="text-sm font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Compétences acquises</h5>
+            <div class="flex flex-wrap gap-2">
+              ${edu.skills.slice(0, 3).map(skill => `
+                <span class="px-2 py-1 bg-gray-100 dark:bg-gray-600 text-xs rounded flex items-center">
+                  <i class="bx ${getSkillIcon(skill)} mr-1"></i>
+                  ${skill}
+                </span>
+              `).join('')}
+              ${edu.skills.length > 3 ? `<span class="px-2 py-1 bg-gray-100 dark:bg-gray-600 text-xs rounded">+${edu.skills.length - 3}</span>` : ''}
+            </div>
+          </div>
+          
+          <button onclick="openEducationModal(${index})" class="btn-voir-plus">
+            <span>Voir plus</span>
+            <i class="bx bx-right-arrow-alt"></i>
+          </button>
+        </div>
+      </div>
+    `).join('');
+  } catch (error) {
+    console.error('Erreur lors du chargement des formations:', error);
+  }
+}
+
+// Fonction pour charger et afficher les expériences
+async function loadExperiences() {
+  try {
+    const response = await fetch('./data/experiences.json');
+    const experiencesData = await response.json();
+    const container = document.getElementById('experiences-container');
+    
+    if (!container) return;
+    
+    container.innerHTML = experiencesData.map((exp, index) => `
+      <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl" data-aos="zoom-in" data-aos-delay="${(index + 1) * 100}">
+        <div class="relative overflow-hidden h-48">
+          <img src="./${exp.image}" alt="${exp.title}" class="w-full h-48 object-cover transform transition-transform duration-500 hover:scale-110">
+          <div>
+            <span class="absolute top-3 right-3 px-3 py-1 bg-primary-500 text-white text-xs font-medium rounded-full">${exp.period}</span>
+            <h3 class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent text-white p-4 text-xl font-semibold">${exp.title}</h3>
+          </div>
+        </div>
+        
+        <div class="p-6">
+          <h4 class="text-lg font-medium text-primary-600 dark:text-primary-400 mb-3">${exp.institution}</h4>
+          <div class="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+            ${exp.description}
+          </div>
+          
+          <div class="mb-4">
+            <h5 class="text-sm font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Compétences et outils</h5>
+            <div class="flex flex-wrap gap-2">
+              ${exp.skills.map(skill => `
+                <span class="px-2 py-1 bg-gray-100 dark:bg-gray-600 text-xs rounded flex items-center">
+                  <i class="bx ${getSkillIcon(skill)} mr-1"></i>
+                  ${skill}
+                </span>
+              `).join('')}
+            </div>
+          </div>
+          
+          <button onclick="openExperienceModal(${index})" class="btn-voir-plus">
+            <span>Voir plus</span>
+            <i class="bx bx-right-arrow-alt"></i>
+          </button>
+        </div>
+      </div>
+    `).join('');
+  } catch (error) {
+    console.error('Erreur lors du chargement des expériences:', error);
+  }
+}
+
+// Fonction pour charger et afficher les projets
+async function loadProjects() {
+  try {
+    const response = await fetch('./data/projects.json');
+    const projectsData = await response.json();
+    const container = document.getElementById('projects-container');
+    
+    if (!container) return;
+    
+    container.innerHTML = projectsData.map((project, index) => `
+      <div class="project-card ${project.category.id} bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl" data-aos="zoom-in" data-aos-delay="${(index + 1) * 100}">
+        <div class="relative overflow-hidden h-48">
+          <img src="./${project.image}" alt="${project.title}" class="w-full h-48 object-cover transform transition-transform duration-500 hover:scale-110">
+          <div class="absolute top-3 right-3">
+            <span class="px-3 py-1 bg-primary-500 text-white text-xs font-medium rounded-full">${project.category.name}</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">${project.title}</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+            ${project.description}
+          </p>
+          
+          <div class="mb-4">
+            <h5 class="text-sm font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Technologies utilisées</h5>
+            <div class="flex flex-wrap gap-2">
+              ${project.technologies.map(tech => `
+                <span class="px-2 py-1 bg-gray-100 dark:bg-gray-600 text-xs rounded flex items-center">
+                  <i class="bx ${getSkillIcon(tech)} mr-1"></i>
+                  ${tech}
+                </span>
+              `).join('')}
+            </div>
+          </div>
+          
+          <button onclick="openProjectModal(${index})" class="btn-voir-plus">
+            <span>Voir plus</span>
+            <i class="bx bx-right-arrow-alt"></i>
+          </button>
+        </div>
+      </div>
+    `).join('');
+  } catch (error) {
+    console.error('Erreur lors du chargement des projets:', error);
+  }
+}
+
+// Variables globales pour stocker les données
+let educationData = [];
+let experiencesData = [];
+let projectsData = [];
+
+// Charger toutes les données
+async function loadAllData() {
+  try {
+    const [eduResponse, expResponse, projResponse] = await Promise.all([
+      fetch('./data/education.json'),
+      fetch('./data/experiences.json'),
+      fetch('./data/projects.json')
+    ]);
+    
+    educationData = await eduResponse.json();
+    experiencesData = await expResponse.json();
+    projectsData = await projResponse.json();
+  } catch (error) {
+    console.error('Erreur lors du chargement des données:', error);
+  }
+}
+
+// Fonctions pour ouvrir les modales
+function openEducationModal(index) {
+  const edu = educationData[index];
+  const modal = document.getElementById('detail-modal');
+  const modalTitle = document.getElementById('modal-title');
+  const modalBody = document.getElementById('modal-body');
+  
+  modalTitle.textContent = edu.title;
+  modalBody.innerHTML = `
+    <div class="space-y-4">
+      <div>
+        <h4 class="text-lg font-semibold text-primary-600 dark:text-primary-400 mb-2">${edu.institution}</h4>
+        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4"><i class="bx bx-calendar mr-1"></i>${edu.period}</p>
+      </div>
+      ${edu.formation ? `
+        <div>
+          <h5 class="font-semibold text-gray-900 dark:text-white mb-2">À propos de la formation</h5>
+          <p class="text-gray-600 dark:text-gray-300">${edu.formation}</p>
+        </div>
+      ` : ''}
+      ${edu.parcours ? `
+        <div>
+          <h5 class="font-semibold text-gray-900 dark:text-white mb-2">Parcours</h5>
+          <p class="text-gray-600 dark:text-gray-300">${edu.parcours}</p>
+        </div>
+      ` : ''}
+      <div>
+        <h5 class="font-semibold text-gray-900 dark:text-white mb-3">Compétences acquises</h5>
+        <div class="flex flex-wrap gap-2">
+          ${edu.skills.map(skill => `
+            <span class="px-3 py-1 bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 text-sm rounded-full flex items-center">
+              <i class="bx ${getSkillIcon(skill)} mr-2"></i>
+              ${skill}
+            </span>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+  
+  modal.classList.add('show');
+}
+
+function openExperienceModal(index) {
+  const exp = experiencesData[index];
+  const modal = document.getElementById('detail-modal');
+  const modalTitle = document.getElementById('modal-title');
+  const modalBody = document.getElementById('modal-body');
+  
+  modalTitle.textContent = exp.title;
+  modalBody.innerHTML = `
+    <div class="space-y-4">
+      <div>
+        <h4 class="text-lg font-semibold text-primary-600 dark:text-primary-400 mb-2">${exp.institution}</h4>
+        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4"><i class="bx bx-calendar mr-1"></i>${exp.period}</p>
+      </div>
+      <div>
+        <h5 class="font-semibold text-gray-900 dark:text-white mb-2">Description</h5>
+        <p class="text-gray-600 dark:text-gray-300">${exp.description}</p>
+      </div>
+      ${exp.missions && exp.missions.length > 0 ? `
+        <div>
+          <h5 class="font-semibold text-gray-900 dark:text-white mb-3">Missions principales</h5>
+          <ul class="space-y-2">
+            ${exp.missions.map(mission => `
+              <li class="flex items-start text-gray-600 dark:text-gray-300">
+                <i class="bx bx-check-circle text-primary-600 dark:text-primary-400 mr-2 mt-1 flex-shrink-0"></i>
+                <span>${mission}</span>
+              </li>
+            `).join('')}
+          </ul>
+        </div>
+      ` : ''}
+      <div>
+        <h5 class="font-semibold text-gray-900 dark:text-white mb-3">Compétences et outils</h5>
+        <div class="flex flex-wrap gap-2">
+          ${exp.skills.map(skill => `
+            <span class="px-3 py-1 bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 text-sm rounded-full flex items-center">
+              <i class="bx ${getSkillIcon(skill)} mr-2"></i>
+              ${skill}
+            </span>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+  
+  modal.classList.add('show');
+}
+
+function openProjectModal(index) {
+  const project = projectsData[index];
+  const modal = document.getElementById('detail-modal');
+  const modalTitle = document.getElementById('modal-title');
+  const modalBody = document.getElementById('modal-body');
+  
+  modalTitle.textContent = project.title;
+  modalBody.innerHTML = `
+    <div class="space-y-4">
+      <div>
+        <span class="px-3 py-1 bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 text-sm rounded-full">
+          ${project.category.name}
+        </span>
+      </div>
+      <div>
+        <h5 class="font-semibold text-gray-900 dark:text-white mb-2">Description</h5>
+        <p class="text-gray-600 dark:text-gray-300">${project.description}</p>
+      </div>
+      <div>
+        <h5 class="font-semibold text-gray-900 dark:text-white mb-3">Technologies utilisées</h5>
+        <div class="flex flex-wrap gap-2">
+          ${project.technologies.map(tech => `
+            <span class="px-3 py-1 bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 text-sm rounded-full flex items-center">
+              <i class="bx ${getSkillIcon(tech)} mr-2"></i>
+              ${tech}
+            </span>
+          `).join('')}
+        </div>
+      </div>
+      ${project.link ? `
+        <div class="pt-4">
+          <a href="${project.link}" target="_blank" class="inline-flex items-center px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors">
+            <i class="bxl-github mr-2"></i>
+            Voir sur GitHub
+          </a>
+        </div>
+      ` : ''}
+    </div>
+  `;
+  
+  modal.classList.add('show');
+}
+
+// Fonction pour fermer la modale
+function closeModal() {
+  const modal = document.getElementById('detail-modal');
+  modal.classList.remove('show');
+}
+
 // Attendre que le DOM soit complètement chargé
 document.addEventListener("DOMContentLoaded", function() {
+  // Charger toutes les données au démarrage
+  loadAllData();
+  
+  // Charger les contenus spécifiques selon la page
+  if (document.getElementById('education-container')) {
+    loadEducation();
+  }
+  if (document.getElementById('experiences-container')) {
+    loadExperiences();
+  }
+  if (document.getElementById('projects-container')) {
+    loadProjects();
+  }
   // ---------- Preloader ----------
   const preloader = document.getElementById('preloader');
   window.addEventListener('load', () => {

@@ -1,10 +1,10 @@
 [
     {
       "title": "MyPortfolio",
-      "description": "MyPortfolio est une application web développée en Python avec le framework Flask, structurée selon une architecture modulaire. Elle sépare distinctement la gestion des routes, les templates HTML, les fichiers statiques (CSS, JavaScript, images) et les données. Pour sécuriser le site, mon choix s'est porté sur les extensions Flask-Talisman (HTTPS, en-têtes de sécurité) et CSRF pour protéger les formulaires contre les attaques intersites... Ce site, sur lequel vous naviguez actuellement, constitue le résultat de ce projet personnel, conçu pour mettre en valeur mes compétences, mes projets, ainsi que mon parcours académique et professionnel de manière claire, interactive et accessible.",
+      "description": "MyPortfolio est une application web développée en JavaScript avec une architecture modulaire. Elle sépare distinctement des templates HTML et les données. Ce site, sur lequel vous naviguez actuellement, constitue le résultat de ce projet personnel, conçu pour mettre en valeur mes compétences, mes projets, ainsi que mon parcours académique et professionnel de manière claire, interactive et accessible.",
       "image": "images/images (1)_1746174315330.jpeg",
       "link": "https://github.com/TAREBSofiane/MyPortfolio",
-      "technologies": ["Python", "Flask", "HTML", "CSS", "JavaScript"],
+      "technologies": ["HTML", "CSS", "JavaScript"],
       "category": {"id": "web", "name": "Web"}
     },
     {
