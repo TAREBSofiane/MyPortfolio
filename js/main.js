@@ -324,7 +324,7 @@ function openProjectModal(index) {
       ${project.link ? `
         <div class="pt-4">
           <a href="${project.link}" target="_blank" class="inline-flex items-center px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors">
-            <i class="bxl-github mr-2"></i>
+            <i class="bx bxl-github text-2xl"></i>
             Voir sur GitHub
           </a>
         </div>
