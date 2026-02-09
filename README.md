@@ -7,16 +7,16 @@ Le contenu (formations, projets, expériences, compétences) est stocké dans de
 ## Architecture principale
 
 ### Pages HTML :
-index.html, projects.html, education.html, experiences.html, contact.html
+- index.html, projects.html, education.html, experiences.html, contact.html
 
 ### Styles :
-css/style.css
+- css/style.css
 
 ### Logique JavaScript :
-js/main.js (chargement et affichage dynamique des données JSON)
+- js/main.js (chargement et affichage dynamique des données JSON)
 
 ### Données :
-data/education.json, projects.json, experiences.json, skills.json
+- data/education.json, projects.json, experiences.json, skills.json
 
 ### Ressources :
 - files/CV.pdf
