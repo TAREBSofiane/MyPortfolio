@@ -1,6 +1,30 @@
-# Site Portfolio Statique
+# MyPortfolio
 
-Ce dossier contient la version statique du portfolio.
+Ce portfolio est un site web personnel statique conçu en HTML, CSS et JavaScript, avec une architecture modulaire et orientée données. Il présente mon parcours académique, mes expériences professionnelles, mes projets et mes compétences de manière claire et dynamique.
+
+Le contenu (formations, projets, expériences, compétences) est stocké dans des fichiers JSON et chargé dynamiquement côté client via main.js, ce qui facilite la maintenance, l’évolution du contenu et la séparation entre structure, style et données.
+
+## Architecture principale
+
+### Pages HTML :
+index.html, projects.html, education.html, experiences.html, contact.html
+
+### Styles :
+css/style.css
+
+### Logique JavaScript :
+js/main.js (chargement et affichage dynamique des données JSON)
+
+### Données :
+data/education.json, projects.json, experiences.json, skills.json
+
+### Ressources :
+- files/CV.pdf
+- images/*.png
+  
+## Fonctionnement
+
+Les fichiers JSON contiennent des informations structurées (titres, descriptions, dates, compétences, liens, etc.) qui sont importées dynamiquement par main.js et rendues dans les différentes pages. Cette approche permet d’actualiser le contenu sans modifier le code HTML.
 
 ## Démarrage local
 
@@ -12,9 +36,6 @@ python -m http.server 8000
 
 # Avec Node.js (si http-server est installé)
 npx http-server
-
-# Avec PHP
-php -S localhost:8000
 ```
 
 Puis ouvrez votre navigateur à l'adresse : http://localhost:8000
