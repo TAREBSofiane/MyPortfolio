@@ -15,7 +15,7 @@
     "title": "Hello, I am Sofiane",
     "role": "Data Scientist / AI Engineer",
     "tagline": "passionate",
-    "image": "images/profile.jpeg",
+    "image": "images/IMG_20260210_204637.jpg",
     "actions": [
       { "label": "View my projects", "icon": "bx-code-alt", "path": "/projects" },
       { "label": "Contact me", "icon": "bx-envelope", "path": "/contact" }
