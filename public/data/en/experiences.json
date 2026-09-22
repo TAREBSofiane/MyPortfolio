@@ -22,14 +22,15 @@
   },
   {
     "title": "INTERNSHIP - Data Analyst",
-    "description": "Internship at TA-Consulting, dedicated to data analysis and processing as part of an SFR project studying the siting of network towers.",
+    "description": "Data analysis and modelling for optimising the deployment of SFR network antennas.",
     "missions": [
-      "Participation in the acquisition, processing and structuring of data from various sources to make it usable for analysis.",
-      "Analysis and exploration of data using pivot tables.",
-      "Creation of map-based visualisations to represent the data."
+      "Preparation and analysis of technical and geographical data related to network infrastructure.",
+      "Development of Machine Learning models to predict coverage and identify areas for improvement.",
+      "Analysis of the factors influencing antenna performance.",
+      "Creation of visualisations and maps to support network sizing and planning."
     ],
     "image": "images/TAConsulting.png",
-    "skills": ["R", "Excel", "Data Visualisation"],
+    "skills": ["Python", "R", "Machine Learning", "Data Visualisation"],
     "institution": "TA-Consulting - Paris region",
     "period": "Dec. 2022",
     "link": "https://ta-consulting.fr/"

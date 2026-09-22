@@ -1,10 +1,10 @@
 [
   {
     "title": "MyPortfolio",
-    "description": "MyPortfolio is a web application developed in JavaScript with a modular architecture. It clearly separates HTML templates from data. This very website, which you are currently browsing, is the result of this personal project, designed to showcase my skills, my projects and my academic and professional background in a clear, interactive and accessible way.",
+    "description": "MyPortfolio is a web application built with React and Vite, entirely driven by JSON files (no hard-coded content). The site is bilingual French/English, with a light/dark theme, accessible detail modals and a contact form connected to EmailJS. This very website, which you are currently browsing, is the result of this personal project, designed to showcase my skills, my projects and my academic and professional background in a clear, interactive and accessible way.",
     "image": "images/images (1)_1746174315330.jpeg",
     "link": "https://github.com/TAREBSofiane/MyPortfolio",
-    "technologies": ["HTML", "CSS", "JavaScript"],
+    "technologies": ["React", "Tailwind CSS", "Vite", "JavaScript"],
     "category": {"id": "web", "name": "Web"}
   },
   {

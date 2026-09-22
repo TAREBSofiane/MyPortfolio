@@ -23,7 +23,7 @@ export default function BackToTop() {
       type="button"
       aria-label={t('a11y.backToTop')}
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-      className={`fixed bottom-2 right-2 p-2 rounded-full bg-primary-600 text-white shadow-lg z-[9999] transition-all duration-300 hover:bg-primary-700 ${
+      className={`fixed bottom-2 right-2 p-2 rounded-full bg-primary-600 text-white shadow-lg z-[15] transition-all duration-300 hover:bg-primary-700 ${
         visible ? '' : 'opacity-0 invisible'
       }`}
     >

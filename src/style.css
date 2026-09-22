@@ -284,7 +284,7 @@ html.dark body {
 .modal {
   display: none;
   position: fixed;
-  z-index: 1000;
+  z-index: 1000; /* au-dessus de tout : navbar 10, back-to-top 15, overlay 20, drawer 30, preloader 50 */
   left: 0;
   top: 0;
   width: 100%;

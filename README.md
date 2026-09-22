@@ -110,12 +110,16 @@ Le fichier netlify.toml est déjà configuré:
 
 Tout le contenu vient de public/data (aucune donnée en dur dans le code React):
 
-- profile.json: identité, hero, à propos, services, contact, réseaux sociaux, CV, config EmailJS, SEO (français)
+- profile.json: identité, hero (photo hero.image), à propos, services, contact, réseaux sociaux, CV (cv.path), config EmailJS, SEO (français)
 - education.json, experiences.json, projects.json, skills.json: contenus français
 - public/data/en/: mêmes fichiers traduits en anglais (profile, education, experiences, projects)
 - skill-icons.json: correspondance compétence -> icône Boxicons (clés FR et EN)
 
 Les libellés d'interface (navigation, boutons, messages du formulaire) sont dans src/lib/i18n.js.
+
+Le CV proposé au téléchargement suit la langue du site: cv.path de public/data/profile.json pointe vers le CV français et celui de public/data/en/profile.json vers le CV anglais. Placez les deux PDF dans public/files.
+
+La photo de profil du hero est définie par hero.image (chemin relatif depuis public).
 
 Le copyright du footer affiche l'année écrite dans profile.json (footer.copyright), volontairement fixee a 2024.
 

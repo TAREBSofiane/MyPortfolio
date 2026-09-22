@@ -22,10 +22,10 @@
   },
   {
     "title": "STAGE - Data Analyst",
-    "description": "Stage réalisé chez TA-Consulting, consacré à l'analyse et au traitement de données dans le cadre d'un projet SFR portant sur l'étude de l'implantation des tours de réseau.",
+    "description": "Analyse et modélisation de données pour l'optimisation du déploiement d'antennes réseau SFR.",
     "missions": [
-      "Participation à l'acquisition, au traitement et à la structuration de données issues de différentes sources pour les rendre exploitables à des fins d'analyse.",
-      "Développement de modèles de Machine Learning pour prédire la couverture et identifier les zones à améliorer. ",
+      "Préparation et analyse de données techniques et géographiques liées aux infrastructures réseau.",
+      "Développement de modèles de Machine Learning pour prédire la couverture et identifier les zones à améliorer.",
       "Analyse des facteurs influençant les performances des antennes.",
       "Création de visualisations et cartes pour faciliter le dimensionnement et la planification du réseau."
     ],
