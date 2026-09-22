@@ -1,0 +1,33 @@
+[
+  {
+    "title": "Master MAS, Data Science and AI track",
+  "formation": "The Master MAS at Rennes 2 University offers training in these approaches through six different tracks. On top of a common set of skills (modelling and statistical methods, digital and computing tools), each track adds specific skills in the major themes of artificial intelligence, data science for biology, econometrics, health and public statistics.",
+  "parcours": "The track focuses on the Artificial Intelligence aspects of Data Science. It provides advanced-level skills in mathematics and computer science to handle complex data: high dimensionality, one- and two-dimensional signals, images, texts... Particular attention is paid to digital architectures for processing this data; students have access to computing servers to run the algorithms presented in practical sessions and to carry out the many projects offered.",
+  "institution": "Rennes 2 University - Rennes",
+  "period": "09/2023 - 08/2025",
+  "image": "images/Rennes_2.jpeg",
+  "link": "https://sites-formations.univ-rennes2.fr/master-mas/",
+  "skills": ["Statistics", "Data analysis", "ML and DL", "NLP", "Econometrics"]
+},
+{
+  "title": "Bachelor MIASHS",
+  "formation": "The MIASHS bachelor's degree at Clermont Auvergne University is a three-year, science-oriented programme. It has two main disciplinary pillars: mathematics and computer science on the one hand, and economics and management on the other, with a specialisation in management accounting, statistics and databases.",
+  "parcours": "",
+  "institution": "Clermont Auvergne University - Clermont Ferrand",
+  "period": "09/2021 - 08/2023",
+  "image": "images/Clermont.jpeg",
+  "link": "http://www.irem.univ-bpclermont.fr/IMG/pdf/PlaquetteLicenceMIASHS2017.pdf",
+  "skills": ["Analysis", "Algebra", "Statistics and Probability", "Micro and Macroeconomics"]
+},
+{
+  "title": "Bachelor in Operations Research",
+  "formation": "The Operations Research bachelor's degree at USTHB is a three-year multidisciplinary programme designed to provide students with solid foundations in mathematical modelling, optimisation and statistical analysis. Its main goal is to train specialists capable of solving complex decision-making and planning problems in industrial, logistics or IT contexts",
+  "parcours": "",
+  "institution": "USTHB - Algiers",
+  "period": "09/2017 - 08/2021",
+  "image": "images/USTHB.jpeg",
+  "link": "https://usthb.academia.edu/Departments/Recherche_Operationelle/Documents",
+    "skills": ["Optimization", "Graph theory", "Statistics and Probability", "IS"]
+  }
+]
+

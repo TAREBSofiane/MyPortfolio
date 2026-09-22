@@ -12,15 +12,31 @@ body {
     overflow-x: hidden;
     overflow-y: scroll;
     font-family: 'Inter', sans-serif;
+    min-height: 100vh; /* min-h-screen */
+    display: flex; /* flex */
+    flex-direction: column; /* flex-col */
+    color: #1f2937; /* text-gray-800 */
+    transition: background-color 0.3s ease, color 0.3s ease; /* transition-colors duration-300 */
   }
   
 html.dark,
 html.dark body {
     background: #111827;
   }
+
+html.dark body {
+    color: #e5e7eb; /* dark:text-gray-200 */
+  }
   
   #preloader {
+    position: fixed; /* fixed + inset-0 */
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: #f9fafb;
+    transition: opacity 0.5s ease; /* transition-opacity duration-500 */
   }
   
   html.dark #preloader {
@@ -80,8 +96,7 @@ html.dark body {
   }
   
   /* Liens de navigation actifs */
-  .nav-link.active,
-  .mobile-nav-link.active {
+  .nav-link.active {
     color: #6366f1;
     font-weight: 600;
   }
@@ -244,8 +259,8 @@ html.dark body {
     to { transform: rotate(360deg); }
   }
   
-  /* Focus styles for accessibility */
-  input:focus, textarea:focus, button:focus, a:focus {
+  /* Focus styles for accessibility (focus-visible uniquement: pas d'anneau au clic souris) */
+  input:focus-visible, textarea:focus-visible, button:focus-visible, a:focus-visible {
     outline: 2px solid rgba(99, 102, 241, 0.5);
     outline-offset: 2px;
   }
@@ -354,7 +369,7 @@ html.dark body {
 }
 
 .close-modal:hover,
-.close-modal:focus {
+.close-modal:focus-visible {
   color: #ef4444;
 }
 
@@ -478,23 +493,22 @@ html.dark body {
 }
 
 .skills-scroll-wrapper {
-  animation: scrollDown 15s linear infinite;
-  position: absolute;
-  width: 100%;
+  animation: scrollDown 15s linear infinite alternate;
 }
 
 @keyframes scrollDown {
-  0% {
-    transform: translateY(0);
+  0%, 8% {
+    transform: translateY(0); /* Pause en haut : les premieres competences restent bien lisibles */
   }
-  100% {
-    transform: translateY(-50%); /* Exactement la moitié pour un défilement parfait */
+  92%, 100% {
+    transform: translateY(calc(-100% + 350px)); /* Descend jusqu'en bas de la liste puis remonte (alternate) */
   }
 }
 
 /* Ajustement de l'espacement entre les grilles et icônes */
 .skills-container .grid {
   margin-bottom: 0 !important;
+  margin-top: 20px !important;
   gap: 0.75rem !important; /* Réduit davantage l'espacement entre les icônes */
   opacity: 1;
   visibility: visible;
@@ -507,9 +521,8 @@ html.dark body {
 }
 
 .skills-container:hover .skills-scroll-wrapper {
-  animation-play-state: paused;
-  position: static; /* Important : permet le scroll manuel */
-  transform: none !important; /* Annule toute transformation pour permettre le scroll */
+  animation: none !important; /* Coupe totalement l'animation pour un scroll manuel propre */
+  transform: none !important;
 }
 
 /* Amélioration de la scrollbar */
@@ -652,4 +665,21 @@ html.dark body {
 
 .skill-icon-container:hover .skill-name {
   transform: rotateY(180deg); /* Le texte se retourne aussi avec l'icône */
+}
+
+/* Lien d'evitement pour l'accesibilite */
+.skip-link {
+  position: absolute;
+  top: -48px;
+  left: 8px;
+  z-index: 10000;
+  padding: 8px 16px;
+  background: #4f46e5;
+  color: #fff;
+  border-radius: 0 0 8px 8px;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0;
 }

@@ -1,0 +1,37 @@
+[
+  {
+    "title": "INTERNSHIP + FIXED-TERM CONTRACT - Data Scientist / AI Engineer",
+    "description": "Design and production deployment of a generative AI platform: agentic RAG, business applications, automated model evaluation and observability.",
+    "missions": [
+      "Design and production deployment of an agentic RAG (LLM agents with tool orchestration and memory) leveraging the heterogeneous document bases of the different departments.",
+      "Production deployment of Open WebUI as the access interface to models and assistants, with user and permission management.",
+      "Development and securing of robust APIs to integrate the platform with existing services.",
+      "Implementation of SSO-OAuth authentication and HTTPS hardening to ensure compliance and security in production.",
+      "Design of an application that automates document processing, centralises knowledge base management and now also handles user access and permissions.",
+      "Implementation of an automated evaluation system for the retriever and the generator (test sets, relevance and faithfulness metrics) to drive continuous improvement.",
+      "Platform instrumentation with Langfuse: LLM chain tracing, performance and cost tracking, and production observability.",
+      "Development and production deployment of an audio transcription application (speech to text) with automatic AI summarisation.",
+      "Development of web applications and interfaces for various use cases.",
+      "Managing the transition from POC to production and supporting business teams in experimenting with and validating prototypes."
+    ],
+    "image": "images/Rennes_métropole.jpeg",
+    "skills": ["Agentic RAG", "LLM Agents", "Python", "FastAPI", "Open WebUI", "Langfuse", "Speech to Text", "Docker", "GitLab", "CI/CD", "SSO-OAuth", "NLP"],
+    "institution": "Rennes Métropole - Rennes",
+    "period": "Since Feb. 2025",
+    "link": "https://metropole.rennes.fr/"
+  },
+  {
+    "title": "INTERNSHIP - Data Analyst",
+    "description": "Internship at TA-Consulting, dedicated to data analysis and processing as part of an SFR project studying the siting of network towers.",
+    "missions": [
+      "Participation in the acquisition, processing and structuring of data from various sources to make it usable for analysis.",
+      "Analysis and exploration of data using pivot tables.",
+      "Creation of map-based visualisations to represent the data."
+    ],
+    "image": "images/TAConsulting.png",
+    "skills": ["R", "Excel", "Data Visualisation"],
+    "institution": "TA-Consulting - Paris region",
+    "period": "Dec. 2022",
+    "link": "https://ta-consulting.fr/"
+  }
+]

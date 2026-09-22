@@ -1,0 +1,99 @@
+{
+  "site": {
+    "url": "https://sofiane-tareb.netlify.app",
+    "title": "Sofiane TAREB | Portfolio",
+    "description": "Portfolio of Sofiane TAREB, Data Scientist and AI Engineer: machine learning projects, generative AI (RAG), data visualization and academic background.",
+    "ogImage": "images/profile.jpeg"
+  },
+  "identity": {
+    "name": "Sofiane TAREB",
+    "role": "Data Scientist / AI Engineer",
+    "email": "sofianetareb.pro@gmail.com",
+    "location": "Rennes, France"
+  },
+  "hero": {
+    "title": "Hello, I am Sofiane",
+    "role": "Data Scientist / AI Engineer",
+    "tagline": "passionate",
+    "image": "images/profile.jpeg",
+    "actions": [
+      { "label": "View my projects", "icon": "bx-code-alt", "path": "/projects" },
+      { "label": "Contact me", "icon": "bx-envelope", "path": "/contact" }
+    ]
+  },
+  "about": {
+    "title": "About me",
+    "text": "I am driven by curiosity and the passion for turning complex challenges into simply useful solutions. Independent while enjoying collaboration, I make sure to combine rigor and a down-to-earth mindset so that every project has a tangible impact. Outside the digital world, I find my inspiration in photography, travel and hiking, permanent sources of creativity and sharp analysis. Quadrilingual and open to the diversity of cultures, I bring an adaptable and enthusiastic outlook to any new adventure.",
+    "languages": ["French", "English", "Arabic", "Kabyle"]
+  },
+  "skillsSection": {
+    "title": "My skills"
+  },
+  "services": {
+    "title": "What I do",
+    "subtitle": "Here are the areas in which I excel and the services I can offer you",
+    "items": [
+      {
+        "icon": "bx-bot",
+        "title": "AI Agents & RAG",
+        "description": "Development of LLM agents and Retrieval-Augmented Generation systems: tool orchestration, automated evaluation, observability and production deployment."
+      },
+      {
+        "icon": "bx-server",
+        "title": "APIs & Python Backend",
+        "description": "Designing high-performance APIs and Python backends to integrate AI models, automate processes, and efficiently leverage data."
+      },
+      {
+        "icon": "bx-brain",
+        "title": "Data Science",
+        "description": "Development of machine learning models and AI systems to solve complex problems."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Ready to work together?",
+    "text": "Feel free to contact me to discuss your project or for any questions.",
+    "buttonLabel": "Contact me"
+  },
+  "contact": {
+    "formTitle": "Contact me",
+    "formText": "You have a project in mind, a question or a proposal? Feel free to send me a message!",
+    "infoTitle": "Information",
+    "mapImage": "images/map.jpeg"
+  },
+  "pages": {
+    "experiences": {
+      "title": "My Experience",
+      "subtitle": "Professional background and meaningful experiences"
+    },
+    "education": {
+      "title": "My Education",
+      "subtitle": "Academic background and additional training"
+    },
+    "projects": {
+      "title": "My Projects",
+      "subtitle": "Discover the projects I have worked on and the technologies used"
+    },
+    "contact": {
+      "title": "Ready to work together?",
+      "subtitle": "Feel free to contact me to discuss your project or for any questions."
+    }
+  },
+  "social": [
+    { "name": "GitHub", "icon": "bxl-github", "url": "https://github.com/TAREBSofiane" },
+    { "name": "LinkedIn", "icon": "bxl-linkedin", "url": "https://linkedin.com/in/sofianetareb" },
+    { "name": "Email", "icon": "bx-envelope", "url": "mailto:tarebsofiane18@gmail.com" }
+  ],
+  "cv": {
+    "path": "files/CV_Sofiane_TAREB_EN.pdf",
+    "label": "Download my CV"
+  },
+  "footer": {
+    "tagline": "Data Scientist / AI Engineer",
+    "copyright": "2024 Sofiane TAREB. All rights reserved."
+  },
+  "emailjs": {
+    "serviceId": "service_rv3looo",
+    "templateId": "template_kutkjkw"
+  }
+}

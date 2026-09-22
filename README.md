@@ -1,6 +1,6 @@
-# Portfolio Sofiane TAREB - SPA Vite
+# Portfolio Sofiane TAREB - React + Vite
 
-Portfolio personnel en Single Page Application (SPA), construit avec Vite.
+Portfolio personnel en Single Page Application, construit avec React et Vite.
 
 Le site conserve une navigation par URL:
 - /
@@ -13,9 +13,9 @@ Le rendu est alimenté dynamiquement par des fichiers JSON pour les sections pri
 
 ## Stack technique
 
+- React 19 + React Router (SPA + routing client)
 - Vite (build + dev server)
-- JavaScript ES Modules
-- Tailwind CSS (via CDN dans la page)
+- Tailwind CSS (compilé au build, plus de CDN)
 - AOS (animations au scroll)
 - Boxicons
 - EmailJS pour le formulaire de contact
@@ -23,19 +23,31 @@ Le rendu est alimenté dynamiquement par des fichiers JSON pour les sections pri
 
 ## Fonctionnalités
 
-- Architecture SPA avec un seul fichier HTML
-- Navigation interne sans rechargement de page
-- Données dynamiques chargées depuis public/data
-- Modales de détail pour formations, expériences et projets
+- SPA React avec navigation par URL (React Router)
+- Bilingue français/anglais avec sélecteur de langue persistant
+- Données dynamiques chargées depuis public/data (FR à la racine, EN dans public/data/en)
+- Modales de détail accessibles (focus piégé, touche Echap) pour formations, expériences et projets
 - Thème clair/sombre avec persistance
 - Formulaire de contact connecté à EmailJS
+- SEO complet: meta description, Open Graph, Twitter Cards, canonical, JSON-LD, sitemap.xml, robots.txt
+- Page 404 dédiée et redirections des anciennes URLs .html
 
 ## Structure du projet
 
-- index.html: shell de la SPA et toutes les vues
-- src/main.js: routing, chargement des données, interactions UI, formulaire
-- public/css/style.css: styles personnalisés
-- public/data: contenus JSON
+- index.html: shell SEO de la SPA (meta description, Open Graph, Twitter Cards, canonical, favicon)
+- src/main.jsx: point d'entrée React (providers langue + données, preloader)
+- src/App.jsx: layout, routing, thème clair/sombre, AOS, page d'erreur
+- src/context/LanguageContext.jsx: langue active (fr/en), persistance, traductions
+- src/context/DataContext.jsx: chargement des JSON selon la langue
+- src/lib/i18n.js: libellés d'interface FR/EN
+- src/lib/api.js: accès aux données et helpers
+- src/components: Navbar, Footer, Hero, cartes, modale accessible, formulaire...
+- src/pages: une page par route + page 404
+- src/index.css: directives Tailwind
+- src/style.css: styles personnalisés
+- public/data: contenus JSON en français (source unique de vérité)
+- public/data/en: mêmes contenus traduits en anglais (profile, education, experiences, projects)
+- public/data/skill-icons.json: correspondance compétence -> icône (clés FR et EN)
 - public/images: images
 - public/files: fichiers téléchargeables
 - netlify.toml: build + redirects Netlify
@@ -96,12 +108,16 @@ Le fichier netlify.toml est déjà configuré:
 
 ## Personnaliser le contenu
 
-Modifier les fichiers dans public/data:
+Tout le contenu vient de public/data (aucune donnée en dur dans le code React):
 
-- education.json
-- experiences.json
-- projects.json
-- skills.json
+- profile.json: identité, hero, à propos, services, contact, réseaux sociaux, CV, config EmailJS, SEO (français)
+- education.json, experiences.json, projects.json, skills.json: contenus français
+- public/data/en/: mêmes fichiers traduits en anglais (profile, education, experiences, projects)
+- skill-icons.json: correspondance compétence -> icône Boxicons (clés FR et EN)
+
+Les libellés d'interface (navigation, boutons, messages du formulaire) sont dans src/lib/i18n.js.
+
+Le copyright du footer affiche l'année écrite dans profile.json (footer.copyright), volontairement fixee a 2024.
 
 Les images et documents associés doivent être placés dans:
 
@@ -112,6 +128,12 @@ Utiliser des chemins relatifs depuis public, par exemple:
 
 - images/mon-image.jpg
 - files/mon-cv.pdf
+
+Important SEO: mettre à jour l'URL réelle du site dans:
+- public/data/profile.json (champ site.url)
+- public/sitemap.xml
+- public/robots.txt
+- index.html (canonical + og:url)
 
 ## Dépannage rapide
 

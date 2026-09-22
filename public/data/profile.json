@@ -1,0 +1,99 @@
+{
+  "site": {
+    "url": "https://sofiane-tareb.netlify.app",
+    "title": "Sofiane TAREB | Portfolio",
+    "description": "Portfolio de Sofiane TAREB, Data Scientist et AI Engineer : projets de machine learning, IA générative (RAG), data visualisation et parcours académique.",
+    "ogImage": "images/profile.jpeg"
+  },
+  "identity": {
+    "name": "Sofiane TAREB",
+    "role": "Data Scientist / AI Engineer",
+    "email": "sofianetareb.pro@gmail.com",
+    "location": "Rennes, France"
+  },
+  "hero": {
+    "title": "Bonjour, je suis Sofiane",
+    "role": "Data Scientist / AI Engineer",
+    "tagline": "passionné",
+    "image": "images/profile.jpeg",
+    "actions": [
+      { "label": "Voir mes projets", "icon": "bx-code-alt", "path": "/projects" },
+      { "label": "Me contacter", "icon": "bx-envelope", "path": "/contact" }
+    ]
+  },
+  "about": {
+    "title": "À propos de moi",
+    "text": "Je suis animé par la curiosité et la passion de transformer des défis complexes en solutions simplement utiles. Indépendant tout en aimant collaborer, je veille à allier rigueur et sens du concret pour que chaque projet ait un impact tangible. Hors du monde numérique, je trouve mon inspiration dans la photographie, les voyages et les randonnées, sources permanentes de créativité et d'analyse fine. Quadrilingue et ouvert à la diversité des cultures, j'apporte un regard adaptable et enthousiaste à toute nouvelle aventure.",
+    "languages": ["Français", "Anglais", "Arabe", "Kabyle"]
+  },
+  "skillsSection": {
+    "title": "Mes compétences"
+  },
+  "services": {
+    "title": "Ce que je fais",
+    "subtitle": "Voici les domaines dans lesquels j'excelle et les services que je peux vous offrir",
+    "items": [
+      {
+        "icon": "bx-bot",
+        "title": "AI Agents & RAG",
+        "description": "Développement d'agents LLM et de systèmes RAG augmentés : orchestration d'outils, évaluation automatisée, observabilité et mise en production."
+      },
+      {
+        "icon": "bx-server",
+        "title": "APIs & Python Backend",
+        "description": "Conception d'APIs et de backends Python performants pour intégrer des modèles d'IA, automatiser les traitements et exploiter efficacement les données."
+      },
+      {
+        "icon": "bx-brain",
+        "title": "Data Science",
+        "description": "Développement de modèles de machine learning et de systèmes d'IA pour résoudre des problèmes complexes."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Prêt à travailler ensemble ?",
+    "text": "N'hésitez pas à me contacter pour discuter de votre projet ou pour toute question.",
+    "buttonLabel": "Me contacter"
+  },
+  "contact": {
+    "formTitle": "Contactez-moi",
+    "formText": "Vous avez un projet en tête, une question ou une proposition ? N'hésitez pas à m'envoyer un message !",
+    "infoTitle": "Informations",
+    "mapImage": "images/map.jpeg"
+  },
+  "pages": {
+    "experiences": {
+      "title": "Mes Expériences",
+      "subtitle": "Parcours professionnel et expériences significatives"
+    },
+    "education": {
+      "title": "Mes Formations",
+      "subtitle": "Parcours académique et formations complémentaires"
+    },
+    "projects": {
+      "title": "Mes Projets",
+      "subtitle": "Découvrez les projets sur lesquels j'ai travaillé et les technologies utilisées"
+    },
+    "contact": {
+      "title": "Prêt à travailler ensemble ?",
+      "subtitle": "N'hésitez pas à me contacter pour discuter de votre projet ou pour toute question."
+    }
+  },
+  "social": [
+    { "name": "GitHub", "icon": "bxl-github", "url": "https://github.com/TAREBSofiane" },
+    { "name": "LinkedIn", "icon": "bxl-linkedin", "url": "https://linkedin.com/in/sofianetareb" },
+    { "name": "Email", "icon": "bx-envelope", "url": "mailto:tarebsofiane18@gmail.com" }
+  ],
+  "cv": {
+    "path": "files/CV_Sofiane_TAREB_FR.pdf",
+    "label": "Télécharger mon CV"
+  },
+  "footer": {
+    "tagline": "Data Scientist / AI Engineer",
+    "copyright": "2024 Sofiane TAREB. Tous droits réservés."
+  },
+  "emailjs": {
+    "serviceId": "service_rv3looo",
+    "templateId": "template_kutkjkw"
+  }
+}
