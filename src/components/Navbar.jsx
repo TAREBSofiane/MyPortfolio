@@ -94,7 +94,7 @@ export default function Navbar({ dark, onToggleDark }) {
           {langToggle}
         </div>
 
-        <div className="md:hidden flex items-center space-x-4">
+        <div className="md:hidden flex items-center space-x-2">
           {langToggle}
           {themeToggle()}
           <button
@@ -104,7 +104,7 @@ export default function Navbar({ dark, onToggleDark }) {
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
             onClick={() => setMenuOpen(true)}
-          >
+            >
             <i className="bx bx-menu" aria-hidden="true"></i>
           </button>
         </div>
