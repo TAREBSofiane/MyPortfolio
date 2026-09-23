@@ -15,7 +15,7 @@
     "title": "Hello, I am Sofiane",
     "role": "Data Scientist / AI Engineer",
     "tagline": "passionate",
-    "image": "images/IMG_20260210_204637.jpg",
+    "image": "images/profile.jpeg",
     "actions": [
       { "label": "View my projects", "icon": "bx-code-alt", "path": "/projects" },
       { "label": "Contact me", "icon": "bx-envelope", "path": "/contact" }
@@ -82,7 +82,7 @@
   "social": [
     { "name": "GitHub", "icon": "bxl-github", "url": "https://github.com/TAREBSofiane" },
     { "name": "LinkedIn", "icon": "bxl-linkedin", "url": "https://linkedin.com/in/sofianetareb" },
-    { "name": "Email", "icon": "bx-envelope", "url": "mailto:tarebsofiane18@gmail.com" }
+    { "name": "Email", "icon": "bx-envelope", "url": "mailto:sofianetareb.pro@gmail.com" }
   ],
   "cv": {
     "path": "files/CV_Sofiane_TAREB_EN.pdf",
