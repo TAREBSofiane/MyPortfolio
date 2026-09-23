@@ -82,7 +82,7 @@
   "social": [
     { "name": "GitHub", "icon": "bxl-github", "url": "https://github.com/TAREBSofiane" },
     { "name": "LinkedIn", "icon": "bxl-linkedin", "url": "https://linkedin.com/in/sofianetareb" },
-    { "name": "Email", "icon": "bx-envelope", "url": "mailto:tarebsofiane18@gmail.com" }
+    { "name": "Email", "icon": "bx-envelope", "url": "mailto:sofianetareb.pro@gmail.com" }
   ],
   "cv": {
     "path": "files/CV_Sofiane_TAREB_FR.pdf",
